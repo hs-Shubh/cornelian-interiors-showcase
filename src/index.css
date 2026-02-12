@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Luxury Neutral Palette */
+    --background: 40 20% 97%;
+    --foreground: 30 8% 18%;
+    
+    --card: 40 30% 98%;
+    --card-foreground: 30 8% 18%;
+    
+    --popover: 40 30% 98%;
+    --popover-foreground: 30 8% 18%;
+    
+    --primary: 30 8% 18%;
+    --primary-foreground: 40 20% 97%;
+    
+    --secondary: 38 15% 92%;
+    --secondary-foreground: 30 8% 18%;
+    
+    --muted: 38 12% 90%;
+    --muted-foreground: 30 6% 45%;
+    
+    --accent: 40 45% 55%;
+    --accent-foreground: 30 8% 18%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 40 20% 97%;
+    
+    --border: 38 15% 88%;
+    --input: 38 15% 88%;
+    --ring: 40 45% 55%;
+    
+    --radius: 0.25rem;
+    
+    /* Custom luxury tokens */
+    --cream: 40 30% 96%;
+    --ivory: 43 33% 94%;
+    --champagne: 40 45% 55%;
+    --charcoal: 30 8% 18%;
+    --warm-grey: 35 6% 52%;
+    --light-grey: 38 10% 75%;
+    
+    /* Typography */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    
+    /* Spacing */
+    --section-padding: clamp(4rem, 10vw, 8rem);
+    
+    /* Transitions */
+    --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-medium: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .dark {
+    --background: 30 8% 8%;
+    --foreground: 40 20% 95%;
+    
+    --card: 30 8% 10%;
+    --card-foreground: 40 20% 95%;
+    
+    --popover: 30 8% 10%;
+    --popover-foreground: 40 20% 95%;
+    
+    --primary: 40 20% 95%;
+    --primary-foreground: 30 8% 8%;
+    
+    --secondary: 30 8% 15%;
+    --secondary-foreground: 40 20% 95%;
+    
+    --muted: 30 8% 18%;
+    --muted-foreground: 38 10% 60%;
+    
+    --accent: 40 45% 55%;
+    --accent-foreground: 40 20% 95%;
+    
+    --border: 30 8% 18%;
+    --input: 30 8% 18%;
+    --ring: 40 45% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  
+  h1 { @apply font-heading text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight; }
+  h2 { @apply font-heading text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight; }
+  h3 { @apply font-heading text-xl sm:text-2xl font-semibold tracking-tight; }
+  h4 { @apply font-heading text-lg sm:text-xl font-medium tracking-tight; }
+  h5, h6 { @apply font-heading text-base font-medium tracking-tight; }
+  
+  ::selection {
+    background: hsl(var(--champagne) / 0.3);
+  }
+}
+
+@layer components {
+  .luxury-container {
+    @apply w-full max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16;
+  }
+  
+  .luxury-heading-xl {
+    @apply font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.1];
+  }
+  
+  .luxury-heading-lg {
+    @apply font-heading text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15];
+  }
+  
+  .luxury-heading-md {
+    @apply font-heading text-2xl sm:text-3xl font-semibold tracking-tight leading-[1.2];
+  }
+  
+  .luxury-heading-sm {
+    @apply font-heading text-xl sm:text-2xl font-semibold tracking-tight leading-[1.2];
+  }
+  
+  .luxury-body {
+    @apply font-body text-base md:text-lg font-normal leading-relaxed text-foreground/85;
+  }
+  
+  .luxury-body-sm {
+    @apply font-body text-sm md:text-base font-normal leading-relaxed text-foreground/80;
+  }
+  
+  .luxury-label {
+    @apply font-body text-xs md:text-sm uppercase tracking-[0.2em] text-muted-foreground font-medium;
+  }
+  
+  .luxury-divider {
+    @apply w-16 h-px bg-accent;
+  }
+  
+  .luxury-section {
+    @apply py-20 md:py-28 lg:py-36;
+  }
+  
+  .luxury-card {
+    @apply bg-card border border-border/50 transition-all duration-500;
+  }
+  
+  .luxury-image-hover {
+    @apply overflow-hidden;
+  }
+  
+  .luxury-image-hover img {
+    @apply transition-transform duration-700 ease-out;
+  }
+  
+  .luxury-image-hover:hover img {
+    @apply scale-105;
+  }
+  
+  .nav-link {
+    @apply relative text-sm tracking-[0.1em] uppercase font-body font-normal text-foreground/80 
+           hover:text-foreground transition-colors duration-300;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-accent scale-x-0 origin-right transition-transform duration-300;
+  }
+  
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply scale-x-100 origin-left;
+  }
+}
+
+@layer utilities {
+  .skip-link {
+    @apply sr-only;
+  }
+  .skip-link:focus {
+    @apply absolute top-4 left-4 z-[100] px-4 py-2 bg-charcoal text-cream font-body text-sm uppercase;
+    position: absolute;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

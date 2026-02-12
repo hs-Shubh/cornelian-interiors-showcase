@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap (replace with your production URL if different)
+Sitemap: https://cornelianinteriors.com/sitemap.xml
