@@ -8,7 +8,7 @@
 4. Click **Run** (or press Cmd/Ctrl + Enter).
 5. You should see “Success. No rows returned.” Tables `leads`, `custom_orders`, and `blog_posts` are now created with indexes and RLS policies.
 
-## 2. Create Storage bucket for custom order images
+## 2. Create Storage buckets
 
 1. In the same project, go to **Storage** in the left sidebar.
 2. Click **New bucket**.
@@ -19,8 +19,8 @@
 
 ## 3. Verify
 
-- **Table Editor**: You should see `leads`, `custom_orders`, `blog_posts`.
+- **Table Editor**: You should see `leads`, `custom_orders`, `blog_posts`, `inquiries`.
 - **Authentication → Policies** (or Table Editor → each table → RLS): Policies above should be listed.
-- **Storage**: Bucket `custom-orders` exists and is public.
+- **Storage**: Buckets `custom-orders` and `inquiry-refs` exist and are public.
 
-Your `.env` already points to this project; after running the SQL and creating the bucket, contact form, custom orders, and blog will use Supabase.
+Your `.env` must set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`; after running the SQL and creating the buckets, contact form, custom orders, inquiries, and blog will use Supabase.

@@ -69,6 +69,47 @@ export interface Database {
         };
         Update: Partial<Database["public"]["Tables"]["custom_orders"]["Insert"]>;
       };
+      inquiries: {
+        Row: {
+          id: string;
+          created_at: string;
+          name: string;
+          email: string;
+          phone: string | null;
+          message: string | null;
+          inquiry_type: string | null;
+          product_type: string | null;
+          source: string | null;
+          page_path: string | null;
+          dimensions_text: string | null;
+          material: string | null;
+          finish: string | null;
+          artwork_size: string | null;
+          frame_style: string | null;
+          reference_image_urls: string[];
+          status: string;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          name: string;
+          email: string;
+          phone?: string | null;
+          message?: string | null;
+          inquiry_type?: string | null;
+          product_type?: string | null;
+          source?: string | null;
+          page_path?: string | null;
+          dimensions_text?: string | null;
+          material?: string | null;
+          finish?: string | null;
+          artwork_size?: string | null;
+          frame_style?: string | null;
+          reference_image_urls?: string[];
+          status?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["inquiries"]["Insert"]>;
+      };
       blog_posts: {
         Row: {
           id: string;
@@ -109,3 +150,5 @@ export type LeadInsert = Database["public"]["Tables"]["leads"]["Insert"];
 export type CustomOrder = Database["public"]["Tables"]["custom_orders"]["Row"];
 export type CustomOrderInsert = Database["public"]["Tables"]["custom_orders"]["Insert"];
 export type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"];
+export type Inquiry = Database["public"]["Tables"]["inquiries"]["Row"];
+export type InquiryInsert = Database["public"]["Tables"]["inquiries"]["Insert"];

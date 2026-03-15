@@ -1,4 +1,4 @@
-import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase";
 import type { CustomOrderInsert } from "@/types/supabase";
 
 const BUCKET = "custom-orders";
@@ -15,7 +15,8 @@ export function generateOrderId(): string {
 }
 
 export async function uploadOrderImages(orderId: string, files: File[]): Promise<string[]> {
-  if (!isSupabaseConfigured || files.length === 0) return [];
+  const supabase = getSupabaseClient();
+  if (!isSupabaseConfigured || !supabase || files.length === 0) return [];
   const urls: string[] = [];
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
@@ -35,7 +36,8 @@ export async function uploadOrderImages(orderId: string, files: File[]): Promise
 export async function submitCustomOrder(
   payload: Omit<CustomOrderInsert, "id" | "created_at" | "image_urls"> & { image_urls?: string[] }
 ): Promise<{ success: boolean; orderId?: string; error?: string }> {
-  if (!isSupabaseConfigured) {
+  const supabase = getSupabaseClient();
+  if (!isSupabaseConfigured || !supabase) {
     return { success: false, error: "Backend not configured" };
   }
   const { error } = await supabase.from("custom_orders").insert({

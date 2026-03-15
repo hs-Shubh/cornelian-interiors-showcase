@@ -102,17 +102,17 @@ const Home = () => {
               animate="animate"
             >
               <Link
-                to="/projects"
+                to="/contact"
                 className="group inline-flex items-center gap-3 bg-cream text-charcoal px-8 py-4 font-body text-sm tracking-[0.1em] uppercase hover:bg-champagne hover:text-cream transition-all duration-500"
               >
-                View Projects
+                Get Free Consultation
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                to="/contact"
+                to="/custom-furniture"
                 className="inline-flex items-center gap-3 border border-cream/50 text-cream px-8 py-4 font-body text-sm tracking-[0.1em] uppercase hover:bg-cream/10 transition-all duration-500"
               >
-                Get in Touch
+                Explore Custom Products
               </Link>
             </motion.div>
           </div>
@@ -155,12 +155,53 @@ const Home = () => {
               </span>
             </div>
             <Link
-              to="/custom-order"
+              to="/custom-furniture"
               className="group inline-flex items-center gap-3 bg-cream text-charcoal px-10 py-4 font-body text-sm tracking-[0.1em] uppercase hover:bg-champagne hover:text-cream transition-all duration-500"
             >
               Design Your Cabinet
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CHIITRA Product */}
+      <section className="luxury-section bg-background" aria-labelledby="chiitra-heading">
+        <div className="luxury-container">
+          <motion.div
+            className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+            {...motionSection}
+          >
+            <div>
+              <p className="luxury-label mb-4">CHIITRA by Cornelian</p>
+              <h2 id="chiitra-heading" className="luxury-heading-lg mb-6">
+                Bespoke Wall Art & Wall Painting
+              </h2>
+              <p className="luxury-body mb-8">
+                Customizable luxury wall art for your space. Share your reference, choose size and frame. Crafted with the same care as our interiors.
+              </p>
+              <Link
+                to="/chiitra"
+                className="group inline-flex items-center gap-2 font-body text-sm tracking-[0.1em] uppercase text-accent hover:underline"
+              >
+                Explore CHIITRA
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+            <div className="bg-secondary p-8 md:p-10 rounded-sm">
+              <p className="luxury-label mb-2">How it works</p>
+              <ul className="space-y-4 luxury-body-sm">
+                <li>Upload your reference image or describe the artwork you want.</li>
+                <li>Choose size and frame style.</li>
+                <li>We create and deliver to your doorstep.</li>
+              </ul>
+              <Link
+                to="/chiitra"
+                className="mt-6 inline-flex items-center gap-2 bg-charcoal text-cream px-6 py-3 font-body text-xs tracking-[0.1em] uppercase hover:bg-accent transition-colors"
+              >
+                Request a quote
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

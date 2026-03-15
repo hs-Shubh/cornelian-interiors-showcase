@@ -1,8 +1,9 @@
-import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase";
 import type { LeadInsert } from "@/types/supabase";
 
 export async function submitLead(data: LeadInsert): Promise<{ success: boolean; error?: string }> {
-  if (!isSupabaseConfigured) {
+  const supabase = getSupabaseClient();
+  if (!isSupabaseConfigured || !supabase) {
     return { success: false, error: "Backend not configured" };
   }
   const { error } = await supabase.from("leads").insert({

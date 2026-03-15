@@ -1,8 +1,9 @@
-import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase";
 import type { BlogPost } from "@/types/supabase";
 
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
-  if (!isSupabaseConfigured) return [];
+  const supabase = getSupabaseClient();
+  if (!isSupabaseConfigured || !supabase) return [];
   const { data, error } = await supabase
     .from("blog_posts")
     .select("*")
@@ -13,7 +14,8 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
 }
 
 export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
-  if (!isSupabaseConfigured) return null;
+  const supabase = getSupabaseClient();
+  if (!isSupabaseConfigured || !supabase) return null;
   const { data, error } = await supabase
     .from("blog_posts")
     .select("*")

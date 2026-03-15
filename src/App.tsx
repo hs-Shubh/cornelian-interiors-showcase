@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { AnimatedRoutes } from "./components/AnimatedRoutes";
 import { SeoHead } from "./components/SeoHead";
+import { LeadPopup } from "./components/LeadPopup";
 
 const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/Projects"));
@@ -18,6 +19,8 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 const CustomOrder = lazy(() => import("./pages/CustomOrder"));
+const CustomFurniture = lazy(() => import("./pages/CustomFurniture"));
+const Chiitra = lazy(() => import("./pages/Chiitra"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
@@ -45,6 +48,7 @@ const App = () => (
           Skip to main content
         </a>
         <Navigation />
+        <LeadPopup />
         <main id="main-content" role="main">
           <Suspense fallback={<PageFallback />}>
             <Routes>
@@ -56,6 +60,8 @@ const App = () => (
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogDetail />} />
                 <Route path="/custom-order" element={<CustomOrder />} />
+                <Route path="/custom-furniture" element={<CustomFurniture />} />
+                <Route path="/chiitra" element={<Chiitra />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />

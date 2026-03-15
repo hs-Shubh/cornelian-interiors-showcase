@@ -29,13 +29,22 @@ const Footer = () => {
           <div>
             <h4 className="font-heading text-lg mb-6 text-cream">Navigation</h4>
             <nav className="flex flex-col gap-3">
-              {["Home", "Projects", "Services", "Blog", "About", "Contact"].map((item) => (
+              {[
+                { label: "Home", path: "/" },
+                { label: "Projects", path: "/projects" },
+                { label: "Services", path: "/services" },
+                { label: "Blog", path: "/blog" },
+                { label: "About", path: "/about" },
+                { label: "Contact", path: "/contact" },
+                { label: "Custom Furniture", path: "/custom-furniture" },
+                { label: "CHIITRA", path: "/chiitra" },
+              ].map(({ label, path }) => (
                 <Link
-                  key={item}
-                  to={item === "Home" ? "/" : item === "Blog" ? "/blog" : `/${item.toLowerCase()}`}
+                  key={path}
+                  to={path}
                   className="text-sm text-light-grey hover:text-cream transition-colors duration-300"
                 >
-                  {item}
+                  {label}
                 </Link>
               ))}
             </nav>
