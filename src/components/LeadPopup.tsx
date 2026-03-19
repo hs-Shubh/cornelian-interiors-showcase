@@ -78,6 +78,10 @@ export function LeadPopup() {
             source="lead_popup"
             pagePath={typeof window !== "undefined" ? window.location.pathname : ""}
             submitButtonLabel="Send"
+            fallbackSubmitButtonLabel="Email Us"
+            showCancelButton
+            cancelButtonLabel="Not now"
+            onCancel={() => handleOpenChange(false)}
             onSuccess={handleSuccess}
           />
         </div>

@@ -23,6 +23,10 @@ export interface LeadInquiryFormProps {
   showArtworkSizeFrame?: boolean;
   showReferenceImages?: boolean;
   submitButtonLabel?: string;
+  fallbackSubmitButtonLabel?: string;
+  showCancelButton?: boolean;
+  cancelButtonLabel?: string;
+  onCancel?: () => void;
   onSuccess?: () => void;
   className?: string;
 }
@@ -38,6 +42,10 @@ export function LeadInquiryForm({
   showArtworkSizeFrame = false,
   showReferenceImages = false,
   submitButtonLabel = "Send Message",
+  fallbackSubmitButtonLabel = "Send via Email",
+  showCancelButton = false,
+  cancelButtonLabel = "Cancel",
+  onCancel,
   onSuccess,
   className = "",
 }: LeadInquiryFormProps) {
@@ -77,10 +85,21 @@ export function LeadInquiryForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!backendAvailable) {
+      const subject = encodeURIComponent("Free Consultation Inquiry");
+      const body = encodeURIComponent(
+        [
+          `Name: ${formData.name}`,
+          `Email: ${formData.email}`,
+          `Phone: ${formData.phone || "-"}`,
+          "",
+          "Message:",
+          formData.message || "-",
+        ].join("\n")
+      );
+      window.location.href = `mailto:cornelianexecutiveinteriors@gmail.com?subject=${subject}&body=${body}`;
       toast({
-        title: "Form unavailable",
-        description: "Please email us directly at cornelianexecutiveinteriors@gmail.com",
-        variant: "destructive",
+        title: "Opening your email app",
+        description: "Please send the drafted message to complete your inquiry.",
       });
       return;
     }
@@ -179,16 +198,6 @@ export function LeadInquiryForm({
       className={`space-y-6 ${className}`}
       aria-label="Inquiry form"
     >
-      {!backendAvailable && (
-        <p className="text-sm text-muted-foreground border border-amber-200 bg-amber-50 dark:bg-amber-950/20 dark:border-amber-800 p-3 rounded">
-          Form submission is temporarily unavailable. Please email us at{" "}
-          <a href="mailto:cornelianexecutiveinteriors@gmail.com" className="underline text-accent">
-            cornelianexecutiveinteriors@gmail.com
-          </a>
-          .
-        </p>
-      )}
-
       <div>
         <label htmlFor="inquiry-name" className={labelClass}>Your Name</label>
         <input
@@ -354,14 +363,29 @@ export function LeadInquiryForm({
         </div>
       )}
 
-      <button
-        type="submit"
-        disabled={isSubmitting || !backendAvailable}
-        className="w-full flex items-center justify-center gap-3 bg-charcoal text-cream py-4 font-body text-sm tracking-[0.1em] uppercase hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-500"
-      >
-        {isSubmitting ? "Sending..." : submitButtonLabel}
-        <Send size={16} />
-      </button>
+      <div className={showCancelButton ? "grid grid-cols-2 gap-3" : undefined}>
+        {showCancelButton && (
+          <button
+            type="button"
+            onClick={onCancel}
+            className="w-full flex items-center justify-center border border-border text-foreground py-4 font-body text-sm tracking-[0.1em] uppercase hover:bg-muted transition-colors"
+          >
+            {cancelButtonLabel}
+          </button>
+        )}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full flex items-center justify-center gap-3 bg-charcoal text-cream py-4 font-body text-sm tracking-[0.1em] uppercase hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-500"
+        >
+          {isSubmitting
+            ? "Sending..."
+            : backendAvailable
+              ? submitButtonLabel
+              : fallbackSubmitButtonLabel}
+          <Send size={16} />
+        </button>
+      </div>
     </form>
   );
 }
