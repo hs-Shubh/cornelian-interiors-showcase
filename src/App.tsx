@@ -9,8 +9,10 @@ import Footer from "./components/Footer";
 import { AnimatedRoutes } from "./components/AnimatedRoutes";
 import { SeoHead } from "./components/SeoHead";
 import { LeadPopup } from "./components/LeadPopup";
+import { SmoothScroll } from "./components/SmoothScroll";
 
 const Home = lazy(() => import("./pages/Home"));
+const Showcase = lazy(() => import("./pages/Showcase"));
 const Projects = lazy(() => import("./pages/Projects"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const Services = lazy(() => import("./pages/Services"));
@@ -43,6 +45,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <SmoothScroll />
         <SeoHead />
         <a href="#main-content" className="skip-link">
           Skip to main content
@@ -54,6 +57,7 @@ const App = () => (
             <Routes>
               <Route element={<AnimatedRoutes />}>
                 <Route path="/" element={<Home />} />
+                <Route path="/showcase" element={<Showcase />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/projects/:slug" element={<ProjectDetail />} />
                 <Route path="/services" element={<Services />} />

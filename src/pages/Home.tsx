@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Ruler, ImageIcon, Truck } from "lucide-react";
 import { projects, services, stats, brandAttributes } from "@/data/content";
-import heroBg from "@/assets/hero-bg.jpg";
+import { ParallaxImage, Parallax, Reveal, AngleCrossfade } from "@/components/Parallax";
+import { sceneById, img } from "@/lib/showcase";
+import { cn } from "@/lib/utils";
 import aboutBg from "@/assets/about-bg.jpg";
 import { motionSection, motionStagger, motionImageReveal } from "@/components/PageTransition";
 import { LazyImage } from "@/components/LazyImage";
@@ -17,6 +19,10 @@ const heroStagger = {
     transition: { delay: 0.1 * i, duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   }),
 };
+
+const featured = ["grand-foyer", "family-living", "master-green", "daughter-room"]
+  .map((id) => sceneById(id))
+  .filter((s): s is NonNullable<typeof s> => Boolean(s));
 
 const Home = () => {
   const scrollToContent = () => {
@@ -55,13 +61,15 @@ const Home = () => {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Hero">
         <div className="absolute inset-0">
-          <img
-            src={heroBg}
-            alt="Luxury interior design by Cornelian Executive Interiors, Noida"
-            className="w-full h-full object-cover"
-            fetchPriority="high"
+          <ParallaxImage
+            src={img("235b0364-08c0-4dfa-888c-6fcf46d710b9")}
+            alt="Luxury double-height foyer by Cornelian Executive Interiors, Noida"
+            className="h-full w-full"
+            strength={5}
+            kenBurns
+            priority
           />
-          <div className="absolute inset-0 bg-charcoal/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/75 via-charcoal/45 to-charcoal/80" />
         </div>
         <div className="relative z-10 luxury-container text-center">
           <div className="max-w-4xl mx-auto">
@@ -124,6 +132,64 @@ const Home = () => {
         >
           <ChevronDown size={32} />
         </button>
+      </section>
+
+      {/* Signature Spaces — 3D walkthrough */}
+      <section className="luxury-section bg-background overflow-hidden" aria-labelledby="spaces-heading">
+        <div className="luxury-container">
+          <Reveal className="max-w-2xl mb-16 md:mb-24">
+            <p className="luxury-label mb-4">Signature Spaces</p>
+            <h2 id="spaces-heading" className="luxury-heading-lg mb-6">
+              A Walkthrough in Three Dimensions
+            </h2>
+            <p className="luxury-body">
+              Explore a recent residence room by room — every finish, texture and fall of
+              light rendered in meticulous 3D before a single wall is built.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="space-y-24 md:space-y-40">
+          {featured.map((scene, i) => {
+            const reversed = i % 2 === 1;
+            return (
+              <div key={scene.id} className="luxury-container">
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                  <div className={cn("lg:col-span-7", reversed && "lg:order-2")}>
+                    <AngleCrossfade
+                      a={img(scene.images[0])}
+                      b={scene.images[1] ? img(scene.images[1]) : undefined}
+                      alt={`${scene.title} — Cornelian Executive Interiors`}
+                      className="aspect-[4/3] rounded-sm shadow-2xl"
+                    />
+                  </div>
+                  <Parallax offset={36} className={cn("lg:col-span-5", reversed && "lg:order-1")}>
+                    <p className="luxury-label mb-3">{scene.room}</p>
+                    <h3 className="luxury-heading-md mb-5">{scene.title}</h3>
+                    <p className="luxury-body-sm mb-8">{scene.blurb}</p>
+                    <Link
+                      to="/showcase"
+                      className="group inline-flex items-center gap-2 font-body text-sm tracking-[0.1em] uppercase text-accent hover:underline"
+                    >
+                      Enter the walkthrough
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Parallax>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="luxury-container text-center mt-20">
+          <Link
+            to="/showcase"
+            className="group inline-flex items-center gap-3 bg-charcoal text-cream px-10 py-4 font-body text-sm tracking-[0.1em] uppercase hover:bg-accent transition-all duration-500"
+          >
+            Explore All Spaces
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
       </section>
 
       {/* Custom Furniture CTA */}
