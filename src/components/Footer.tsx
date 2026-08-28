@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Instagram } from "lucide-react";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo-mark.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -84,7 +84,7 @@ const Footer = () => {
               </a>
               <div className="flex items-start gap-3 text-sm text-light-grey">
                 <MapPin size={16} className="flex-shrink-0 mt-0.5" />
-                <span>D107, Sector 2, Noida, NCR</span>
+                <span>Faridabad, Haryana</span>
               </div>
               <a
                 href="https://instagram.com/world_cornelian"

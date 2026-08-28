@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { services } from "@/data/content";
 import servicesBg from "@/assets/services-bg.jpg";
+import { Quote } from "@/components/Quote";
+import { quoteByIndex } from "@/data/quotes";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Palette,
@@ -32,6 +34,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 const Services = () => {
+  const quote = quoteByIndex(4);
   return (
     <>
       {/* Hero */}
@@ -106,6 +109,8 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      <Quote quote={quote.quote} author={quote.author} />
 
       {/* CTA */}
       <section className="py-20 bg-charcoal text-cream">

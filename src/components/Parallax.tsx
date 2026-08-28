@@ -1,6 +1,7 @@
 import {
   useRef,
   useState,
+  useEffect,
   useLayoutEffect,
   type ReactNode,
   type CSSProperties,
@@ -10,6 +11,7 @@ import {
   useScroll,
   useTransform,
   useReducedMotion,
+  useInView,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -116,16 +118,27 @@ export function Reveal({
   delay?: number;
 }) {
   const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.15 });
+  // Safety net: never leave content stranded if the observer misfires.
+  const [fallback, setFallback] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setFallback(true), 1200);
+    return () => clearTimeout(t);
+  }, []);
+  const show = inView || fallback;
   return (
     <motion.div
+      ref={ref}
       className={className}
       initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40, clipPath: "inset(0 0 100% 0)" }}
-      whileInView={
-        reduce
-          ? { opacity: 1 }
-          : { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }
+      animate={
+        show
+          ? reduce
+            ? { opacity: 1 }
+            : { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }
+          : undefined
       }
-      viewport={{ once: true, margin: "-10%" }}
       transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay }}
     >
       {children}

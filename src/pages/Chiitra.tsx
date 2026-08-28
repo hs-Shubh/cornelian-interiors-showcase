@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, ImageIcon, Ruler, Frame } from "lucide-react";
+import { ArrowRight, ImageIcon, Ruler, Frame, Palette, Sparkles, Brush } from "lucide-react";
 import { SeoHead } from "@/components/SeoHead";
 import { LeadInquiryForm } from "@/components/LeadInquiryForm";
+import { Quote } from "@/components/Quote";
+import { quoteByIndex } from "@/data/quotes";
 import { motionSection, motionStagger } from "@/components/PageTransition";
 
 const Chiitra = () => {
+  const quote = quoteByIndex(0);
   return (
     <>
       <SeoHead />
@@ -59,7 +62,7 @@ const Chiitra = () => {
                     {...motionStagger}
                     transition={{ delay: i * 0.08 }}
                   >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-[2px] bg-secondary border border-hairline flex items-center justify-center">
                       <item.icon className="w-5 h-5 text-accent" aria-hidden />
                     </div>
                     <div>
@@ -86,6 +89,43 @@ const Chiitra = () => {
           </div>
         </div>
       </section>
+
+      {/* Mediums & styles strip */}
+      <section className="luxury-section bg-secondary hairline-t hairline-b">
+        <div className="luxury-container">
+          <div className="max-w-2xl mb-12">
+            <p className="luxury-label mb-4 inline-flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-accent" aria-hidden />
+              Mediums &amp; Styles
+            </p>
+            <h2 className="luxury-heading-lg mb-4">Art tuned to your walls</h2>
+            <p className="luxury-body-sm">
+              From hand-painted murals to framed canvases — every piece is composed for your space,
+              palette and light.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-8">
+            {[
+              { icon: Brush, title: "Hand-painted murals", text: "Bespoke wall paintings applied on-site by our artists." },
+              { icon: Palette, title: "Canvas & giclée", text: "Gallery-grade prints and originals on premium canvas." },
+              { icon: Frame, title: "Framing & mounting", text: "Curated frames, floaters or frameless mounts." },
+            ].map((m, i) => (
+              <motion.div
+                key={m.title}
+                className="p-6 bg-card border border-hairline"
+                {...motionStagger}
+                transition={{ delay: i * 0.06 }}
+              >
+                <m.icon className="w-7 h-7 text-accent mb-5" aria-hidden />
+                <h3 className="font-heading text-lg mb-2">{m.title}</h3>
+                <p className="luxury-body-sm">{m.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Quote quote={quote.quote} author={quote.author} variant="cream" />
 
       <section className="py-20 bg-charcoal text-cream">
         <div className="luxury-container text-center">

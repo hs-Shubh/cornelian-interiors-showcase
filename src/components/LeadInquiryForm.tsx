@@ -4,6 +4,7 @@ import { useToast } from "@/hooks/use-toast";
 import { submitLead } from "@/lib/api/leads";
 import { submitInquiry, uploadInquiryImages, isInquiriesApiConfigured } from "@/lib/api/inquiries";
 import { isSupabaseConfigured } from "@/lib/supabase";
+import { trackLead } from "@/lib/analytics";
 import type { InquiryInsert } from "@/types/supabase";
 
 const inputClass =
@@ -114,6 +115,7 @@ export function LeadInquiryForm({
           source: source ?? "contact",
         });
         if (result.success) {
+          trackLead(source ?? variant);
           toast({
             title: "Message Sent",
             description: "Thank you for reaching out. We'll get back to you shortly.",
@@ -162,6 +164,7 @@ export function LeadInquiryForm({
         };
         const result = await submitInquiry(payload);
         if (result.success) {
+          trackLead(source ?? variant);
           toast({
             title: "Inquiry submitted",
             description: "We'll get back to you shortly with next steps.",

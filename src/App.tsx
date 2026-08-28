@@ -8,8 +8,10 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { AnimatedRoutes } from "./components/AnimatedRoutes";
 import { SeoHead } from "./components/SeoHead";
-import { LeadPopup } from "./components/LeadPopup";
 import { SmoothScroll } from "./components/SmoothScroll";
+import { WhatsAppButton } from "./components/WhatsAppButton";
+import { LeadPopup } from "./components/LeadPopup";
+import { Analytics } from "./components/Analytics";
 
 const Home = lazy(() => import("./pages/Home"));
 const Showcase = lazy(() => import("./pages/Showcase"));
@@ -23,6 +25,7 @@ const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 const CustomOrder = lazy(() => import("./pages/CustomOrder"));
 const CustomFurniture = lazy(() => import("./pages/CustomFurniture"));
 const Chiitra = lazy(() => import("./pages/Chiitra"));
+const DesignStudio = lazy(() => import("./pages/DesignStudio"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
@@ -45,19 +48,20 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <Analytics />
         <SmoothScroll />
         <SeoHead />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
         <Navigation />
-        <LeadPopup />
         <main id="main-content" role="main">
           <Suspense fallback={<PageFallback />}>
             <Routes>
               <Route element={<AnimatedRoutes />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/showcase" element={<Showcase />} />
+                <Route path="/design-studio" element={<DesignStudio />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/projects/:slug" element={<ProjectDetail />} />
                 <Route path="/services" element={<Services />} />
@@ -74,6 +78,8 @@ const App = () => (
           </Suspense>
         </main>
         <Footer />
+        <WhatsAppButton />
+        <LeadPopup />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

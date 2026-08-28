@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         heading: ['Cormorant Garamond', 'serif'],
         body: ['Plus Jakarta Sans', 'sans-serif'],
+        display: ['Fraunces', 'Cormorant Garamond', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -29,6 +30,12 @@ export default {
         charcoal: "hsl(var(--charcoal))",
         "warm-grey": "hsl(var(--warm-grey))",
         "light-grey": "hsl(var(--light-grey))",
+        cornelian: "hsl(var(--cornelian))",
+        "cornelian-glow": "hsl(var(--cornelian-glow))",
+        ember: "hsl(var(--ember))",
+        taupe: "hsl(var(--taupe))",
+        surface: "hsl(var(--stone))",
+        hairline: "hsl(var(--hairline))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

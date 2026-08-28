@@ -1,22 +1,71 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Ruler, ImageIcon, Palette, FileText } from "lucide-react";
+import {
+  ArrowRight,
+  Ruler,
+  ImageIcon,
+  Palette,
+  FileText,
+  Layers,
+  TreePine,
+  Gem,
+  Paintbrush,
+  Sparkles,
+} from "lucide-react";
 import { SeoHead } from "@/components/SeoHead";
 import { LeadInquiryForm } from "@/components/LeadInquiryForm";
+import { Quote } from "@/components/Quote";
+import { quoteByIndex } from "@/data/quotes";
 import { motionSection, motionStagger } from "@/components/PageTransition";
 
+const steps = [
+  {
+    icon: ImageIcon,
+    title: "Upload inspiration",
+    text: "Share reference images so we understand your style and preferences.",
+  },
+  {
+    icon: Ruler,
+    title: "Share dimensions",
+    text: "Tell us width, height and depth. We'll confirm feasibility and quote.",
+  },
+  {
+    icon: Palette,
+    title: "Choose finish",
+    text: "Material and finish options are discussed with our team.",
+  },
+  {
+    icon: FileText,
+    title: "We design & deliver",
+    text: "From design to delivery at your doorstep — direct, no third party.",
+  },
+];
+
+const materials = [
+  { icon: TreePine, title: "Solid & engineered wood", text: "Teak, oak, walnut and premium ply cores." },
+  { icon: Layers, title: "Veneers & laminates", text: "Natural veneers and matte, textured laminates." },
+  { icon: Gem, title: "Stone & metal accents", text: "Marble tops, brass and blackened-steel details." },
+  { icon: Paintbrush, title: "Lacquer & PU finishes", text: "Hand-buffed matte, satin and high-gloss." },
+];
+
 const CustomFurniture = () => {
+  const quote = quoteByIndex(3);
+
   return (
     <>
-      <SeoHead />
+      <SeoHead title="Consoles & Cabinets by Cornelian | Custom Furniture" />
+
+      {/* Hero */}
       <section className="pt-32 pb-16 bg-secondary" aria-labelledby="custom-furniture-heading">
         <div className="luxury-container">
-          <p className="luxury-label mb-4">Custom Furniture</p>
+          <p className="luxury-label mb-4 text-accent">By Cornelian</p>
           <h1 id="custom-furniture-heading" className="luxury-heading-xl mb-6">
-            Console & Modular Cabinets
+            Consoles &amp; Cabinets
           </h1>
           <p className="luxury-body max-w-2xl mb-8">
-            Bespoke furniture made to your dimensions and style. Upload inspiration, share dimensions, choose material and finish. We design and deliver directly — no middlemen.
+            Bespoke consoles and cabinets made to your dimensions and style. Upload inspiration,
+            share dimensions, choose material and finish. We design and deliver directly — no
+            middlemen.
           </p>
           <Link
             to="/contact"
@@ -28,6 +77,7 @@ const CustomFurniture = () => {
         </div>
       </section>
 
+      {/* How it works + form */}
       <section className="luxury-section bg-background">
         <div className="luxury-container">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
@@ -36,35 +86,14 @@ const CustomFurniture = () => {
                 How it works
               </motion.h2>
               <ul className="space-y-8">
-                {[
-                  {
-                    icon: ImageIcon,
-                    title: "Upload inspiration",
-                    text: "Share reference images so we understand your style and preferences.",
-                  },
-                  {
-                    icon: Ruler,
-                    title: "Share dimensions",
-                    text: "Tell us width, height and depth. We'll confirm feasibility and quote.",
-                  },
-                  {
-                    icon: Palette,
-                    title: "Choose finish",
-                    text: "Material and finish options are discussed with our team.",
-                  },
-                  {
-                    icon: FileText,
-                    title: "We design & deliver",
-                    text: "From design to delivery at your doorstep — direct, no third party.",
-                  },
-                ].map((item, i) => (
+                {steps.map((item, i) => (
                   <motion.li
                     key={item.title}
                     className="flex gap-6"
                     {...motionStagger}
                     transition={{ delay: i * 0.08 }}
                   >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-[2px] bg-secondary border border-hairline flex items-center justify-center">
                       <item.icon className="w-5 h-5 text-accent" aria-hidden />
                     </div>
                     <div>
@@ -93,11 +122,46 @@ const CustomFurniture = () => {
         </div>
       </section>
 
+      {/* Materials & finishes strip */}
+      <section className="luxury-section bg-secondary hairline-t hairline-b">
+        <div className="luxury-container">
+          <div className="max-w-2xl mb-12">
+            <p className="luxury-label mb-4 inline-flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-accent" aria-hidden />
+              Materials &amp; Finishes
+            </p>
+            <h2 className="luxury-heading-lg mb-4">Crafted from honest materials</h2>
+            <p className="luxury-body-sm">
+              Every piece is built with original materials and a finish tuned to your space — no
+              shortcuts, no substitutions.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {materials.map((m, i) => (
+              <motion.div
+                key={m.title}
+                className="p-6 bg-card border border-hairline"
+                {...motionStagger}
+                transition={{ delay: i * 0.06 }}
+              >
+                <m.icon className="w-7 h-7 text-accent mb-5" aria-hidden />
+                <h3 className="font-heading text-lg mb-2">{m.title}</h3>
+                <p className="luxury-body-sm">{m.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Quote quote={quote.quote} author={quote.author} variant="cream" />
+
+      {/* CTA */}
       <section className="py-20 bg-charcoal text-cream">
         <div className="luxury-container text-center">
           <h2 className="luxury-heading-md mb-4">Ready to start?</h2>
           <p className="luxury-body text-cream/80 max-w-xl mx-auto mb-8">
-            Fill the form above or reach out for a free consultation. We'll guide you through dimensions, materials and delivery.
+            Fill the form above or reach out for a free consultation. We'll guide you through
+            dimensions, materials and delivery.
           </p>
           <Link
             to="/contact"

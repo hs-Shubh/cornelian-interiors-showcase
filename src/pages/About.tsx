@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, Eye, Gem, Wallet, Award, MapPin, Building2, Ruler, Users } from "lucide-react";
 import { brandWords, brandAttributes, stats } from "@/data/content";
+import { Quote } from "@/components/Quote";
+import { quoteByIndex } from "@/data/quotes";
 import aboutBg from "@/assets/about-bg.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
+
+const coreValues = [
+  { icon: ShieldCheck, title: "Trust", text: "Relationships built on reliability and integrity, project after project." },
+  { icon: Eye, title: "Transparency", text: "Clear scope, honest timelines and pricing with no hidden surprises." },
+  { icon: Gem, title: "Quality of Work", text: "Original materials and meticulous craftsmanship on every detail." },
+  { icon: Wallet, title: "Value for Money", text: "Premium outcomes delivered directly — real value at every budget." },
+];
+
+const statIcons = [Award, Building2, Ruler, Users];
 
 const About = () => {
   return (
@@ -37,7 +48,7 @@ const About = () => {
                   and Value for money</span>, while embracing the needs of modern living.
                 </p>
                 <p className="luxury-body">
-                  Located in the heart of Noida, NCR, we quickly gained a reputation for our ability 
+                  Located in Faridabad, Haryana, we quickly gained a reputation for our ability
                   to transform spaces into timeless masterpieces, providing quality construction with 
                   original materials and exceptional value for every project we undertake.
                 </p>
@@ -84,6 +95,30 @@ const About = () => {
                 with focus on meticulous craftsmanship.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="luxury-section bg-background">
+        <div className="luxury-container">
+          <div className="max-w-2xl mb-14">
+            <p className="luxury-label mb-4">What We Stand For</p>
+            <h2 className="luxury-heading-lg mb-4">Our Core Values</h2>
+            <div className="luxury-divider mb-6" />
+            <p className="luxury-body-sm inline-flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-accent" aria-hidden />
+              Based in Faridabad, Haryana
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {coreValues.map((v) => (
+              <div key={v.title} className="p-6 border border-hairline bg-card">
+                <v.icon className="w-7 h-7 text-accent mb-5" aria-hidden />
+                <h3 className="font-heading text-lg mb-2">{v.title}</h3>
+                <p className="luxury-body-sm">{v.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -139,6 +174,8 @@ const About = () => {
         </div>
       </section>
 
+      <Quote quote={quoteByIndex(1).quote} author={quoteByIndex(1).author} variant="cream" />
+
       {/* Stats */}
       <section className="py-20 bg-charcoal text-cream">
         <div className="luxury-container">
@@ -146,16 +183,22 @@ const About = () => {
             <p className="luxury-label text-cream/60 mb-4">Our Impact in Figures</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <span className="block font-heading text-4xl md:text-5xl lg:text-6xl mb-2 text-champagne">
-                  {stat.value}
-                </span>
-                <span className="font-body text-sm tracking-[0.1em] uppercase text-cream/70">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
+            {stats.map((stat, i) => {
+              const StatIcon = statIcons[i];
+              return (
+                <div key={stat.label} className="text-center">
+                  {StatIcon && (
+                    <StatIcon className="w-6 h-6 mx-auto mb-4 text-accent" aria-hidden />
+                  )}
+                  <span className="block font-heading text-4xl md:text-5xl lg:text-6xl mb-2 text-champagne">
+                    {stat.value}
+                  </span>
+                  <span className="font-body text-sm tracking-[0.1em] uppercase text-cream/70">
+                    {stat.label}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

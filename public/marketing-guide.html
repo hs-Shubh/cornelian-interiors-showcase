@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cornelian Executive Interiors — Marketing &amp; Analytics Setup Guide</title>
+<meta name="description" content="Step-by-step analytics and Facebook/Instagram ads setup guide for Cornelian Executive Interiors, a Faridabad luxury interior design studio." />
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --ink-soft:#3d3d3d;
+    --muted:#6b6b6b;
+    --line:#e2ddd3;
+    --line-strong:#c9c0ae;
+    --paper:#fbf9f5;
+    --card:#ffffff;
+    --gold:#a9853f;
+    --gold-soft:#f3ecdd;
+    --green:#2f6b46;
+    --green-soft:#e7f1ea;
+    --blue:#2a5a8c;
+    --blue-soft:#e6eef6;
+    --red:#9c3b32;
+    --red-soft:#f6e7e4;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.05);
+    --maxw:940px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* ---------- Cover / masthead ---------- */
+  header.cover{
+    background:linear-gradient(160deg,#161310 0%,#2a2118 55%,#3a2c1c 100%);
+    color:#f4efe6;
+    padding:56px 0 48px;
+    border-bottom:3px solid var(--gold);
+  }
+  header.cover .wrap{padding-top:8px;}
+  .brandline{
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--gold);
+    margin:0 0 18px;
+    font-weight:600;
+  }
+  header.cover h1{
+    font-size:38px;
+    line-height:1.15;
+    margin:0 0 14px;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  header.cover p.sub{
+    font-size:17px;
+    color:#d8cfbf;
+    max-width:640px;
+    margin:0 0 24px;
+  }
+  .meta-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 28px;
+    font-size:13.5px;
+    color:#cabfad;
+    border-top:1px solid rgba(255,255,255,.14);
+    padding-top:20px;
+  }
+  .meta-grid b{color:#f4efe6;font-weight:600;}
+
+  /* ---------- Section typography ---------- */
+  main{padding:8px 0 60px;}
+  section{
+    padding:38px 0 8px;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-child{border-bottom:none;}
+  h2{
+    font-size:26px;
+    line-height:1.2;
+    margin:0 0 6px;
+    letter-spacing:-.01em;
+    scroll-margin-top:16px;
+  }
+  h2 .num{
+    display:inline-block;
+    min-width:1.9em;
+    color:var(--gold);
+    font-weight:700;
+  }
+  h3{
+    font-size:19px;
+    margin:30px 0 8px;
+    color:var(--ink);
+  }
+  h4{
+    font-size:15.5px;
+    margin:20px 0 6px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--muted);
+  }
+  p{margin:10px 0;}
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(42,90,140,.3);}
+  a:hover{border-bottom-color:var(--blue);}
+  .lead{font-size:17px;color:var(--ink-soft);}
+  .muted{color:var(--muted);}
+  code{
+    background:#f0ece3;
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:1px 6px;
+    font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+    font-size:13.5px;
+    color:#5a441f;
+    word-break:break-word;
+  }
+  .kick{
+    color:var(--muted);
+    font-size:14px;
+    max-width:680px;
+    margin-top:2px;
+  }
+
+  /* ---------- Table of contents ---------- */
+  nav.toc{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    padding:26px 30px;
+    margin:34px 0 8px;
+  }
+  nav.toc h2{font-size:15px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 14px;border:none;}
+  nav.toc ol{margin:0;padding:0;list-style:none;counter-reset:toc;}
+  nav.toc li{
+    counter-increment:toc;
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    padding:7px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  nav.toc li:last-child{border-bottom:none;}
+  nav.toc li::before{
+    content:counter(toc);
+    color:var(--gold);
+    font-weight:700;
+    font-size:14px;
+    min-width:22px;
+  }
+  nav.toc a{border:none;color:var(--ink);font-weight:600;font-size:15.5px;}
+  nav.toc a:hover{color:var(--gold);}
+  nav.toc .t-desc{color:var(--muted);font-weight:400;font-size:13.5px;}
+
+  /* ---------- Callout boxes ---------- */
+  .box{
+    border-radius:10px;
+    padding:16px 20px;
+    margin:18px 0;
+    border:1px solid var(--line);
+    background:var(--card);
+    box-shadow:var(--shadow);
+  }
+  .box .tag{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .box p:first-of-type{margin-top:2px;}
+  .box p:last-child{margin-bottom:0;}
+  .box.tip{background:var(--green-soft);border-color:#c4ddcc;}
+  .box.tip .tag{color:var(--green);}
+  .box.warn{background:var(--red-soft);border-color:#e6c6bf;}
+  .box.warn .tag{color:var(--red);}
+  .box.note{background:var(--blue-soft);border-color:#c6d7e6;}
+  .box.note .tag{color:var(--blue);}
+  .box.key{background:var(--gold-soft);border-color:#e2d3ac;}
+  .box.key .tag{color:var(--gold);}
+
+  /* ---------- Numbered steps ---------- */
+  ol.steps{counter-reset:step;list-style:none;padding:0;margin:14px 0;}
+  ol.steps>li{
+    counter-increment:step;
+    position:relative;
+    padding:4px 0 16px 46px;
+    margin:0;
+  }
+  ol.steps>li::before{
+    content:counter(step);
+    position:absolute;
+    left:0;top:2px;
+    width:30px;height:30px;
+    background:var(--gold);
+    color:#fff;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:14px;
+  }
+  ol.steps>li::after{
+    content:"";
+    position:absolute;
+    left:14.5px;top:34px;bottom:2px;
+    width:1px;background:var(--line-strong);
+  }
+  ol.steps>li:last-child::after{display:none;}
+  ol.steps>li strong.st{display:block;font-size:16px;margin-bottom:1px;}
+  ol.steps ul{margin:6px 0;padding-left:18px;}
+  ol.steps ul li{margin:3px 0;}
+  .where{
+    display:inline-block;
+    font-size:12.5px;
+    color:var(--muted);
+    background:#f0ece3;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:1px 10px;
+    margin-top:4px;
+  }
+  .where b{color:var(--ink-soft);}
+
+  /* ---------- Tables ---------- */
+  .table-scroll{overflow-x:auto;margin:18px 0;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  th,td{
+    text-align:left;
+    padding:10px 13px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  thead th{
+    background:#2a2118;
+    color:#f4efe6;
+    font-size:12.5px;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  tbody tr:nth-child(even){background:#faf7f1;}
+  tbody tr:last-child td{border-bottom:none;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  .total-row td{font-weight:700;background:var(--gold-soft) !important;border-top:2px solid var(--line-strong);}
+
+  /* ---------- Funnel diagram ---------- */
+  .funnel{margin:24px 0 6px;}
+  .funnel .stage{
+    display:flex;
+    align-items:stretch;
+    gap:0;
+    flex-direction:column;
+  }
+  .fbox{
+    position:relative;
+    margin:0 auto;
+    background:var(--card);
+    border:1.5px solid var(--gold);
+    border-radius:10px;
+    padding:12px 18px;
+    text-align:center;
+    box-shadow:var(--shadow);
+  }
+  .fbox .fh{font-weight:700;font-size:15px;color:var(--ink);}
+  .fbox .fs{font-size:12.5px;color:var(--muted);}
+  .farrow{
+    text-align:center;
+    color:var(--gold);
+    font-size:20px;
+    line-height:1;
+    margin:7px 0;
+    font-weight:700;
+  }
+  .fw-100{width:100%;}
+  .fw-85{width:86%;}
+  .fw-70{width:72%;}
+  .fw-55{width:58%;}
+  .fw-40{width:44%;}
+  .funnel .side{
+    font-size:12px;color:var(--muted);text-align:center;margin-top:10px;
+  }
+
+  /* ---------- Storyboard ---------- */
+  .shots{display:grid;gap:10px;margin:16px 0;}
+  .shot{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:12px 14px;
+    align-items:start;
+  }
+  .shot .time{
+    font-weight:700;
+    color:var(--gold);
+    font-size:13px;
+    font-variant-numeric:tabular-nums;
+    border-right:1px solid var(--line);
+    padding-right:8px;
+  }
+  .shot .desc b{display:block;margin-bottom:2px;font-size:14.5px;}
+  .shot .desc span{font-size:13.5px;color:var(--ink-soft);}
+
+  /* ---------- Checklist ---------- */
+  .checklist{list-style:none;padding:0;margin:14px 0;}
+  .checklist li{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    padding:9px 12px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:8px;
+    background:var(--card);
+  }
+  .checklist li .cb{
+    flex:0 0 auto;
+    width:20px;height:20px;
+    border:2px solid var(--line-strong);
+    border-radius:5px;
+    margin-top:2px;
+  }
+  .checklist li .ct{font-size:14.5px;}
+  .checklist li .ct small{display:block;color:var(--muted);font-size:12.5px;}
+  .phase-h{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-size:13px;
+    color:var(--gold);
+    margin:22px 0 8px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .phase-h::after{content:"";flex:1;height:1px;background:var(--line);}
+
+  .pill{
+    display:inline-block;font-size:11.5px;font-weight:600;padding:1px 9px;border-radius:20px;
+    background:var(--gold-soft);color:var(--gold);border:1px solid #e2d3ac;margin-left:6px;vertical-align:middle;
+  }
+  hr.soft{border:none;border-top:1px solid var(--line);margin:26px 0;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media (max-width:640px){
+    header.cover h1{font-size:29px;}
+    .two-col{grid-template-columns:1fr;}
+    .shot{grid-template-columns:52px 1fr;}
+    .fw-85,.fw-70,.fw-55,.fw-40{width:100%;}
+  }
+  footer.legal{
+    padding:26px 0 40px;color:var(--muted);font-size:12.5px;
+  }
+
+  /* ---------- Print ---------- */
+  @media print{
+    :root{--shadow:none;}
+    body{background:#fff;font-size:11.5pt;line-height:1.45;}
+    .wrap{max-width:100%;padding:0 12mm;}
+    header.cover{background:#fff !important;color:#000;border-bottom:2px solid var(--gold);padding:0 0 12px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    header.cover h1{color:#000;font-size:24pt;}
+    header.cover p.sub,.meta-grid{color:#333;}
+    .meta-grid b{color:#000;}
+    .brandline{color:var(--gold);}
+    nav.toc{page-break-after:always;box-shadow:none;}
+    section{page-break-inside:auto;border-bottom:1px solid #ddd;padding-top:18px;}
+    h2,h3{page-break-after:avoid;}
+    table,.shot,.box,ol.steps>li,.checklist li,.fbox{page-break-inside:avoid;}
+    thead th{background:#2a2118 !important;color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .box,.fbox,.shot,.checklist li,.where,code{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    a{color:#000;border:none;}
+    a[href^="http"]::after{content:" (" attr(href) ")";font-size:8pt;color:#666;}
+    .no-print{display:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <p class="brandline">Cornelian Executive Interiors &middot; Faridabad</p>
+    <h1>Marketing &amp; Analytics Setup Guide</h1>
+    <p class="sub">Everything you and your marketing person need to turn on tracking, get found on Google, and run Facebook &amp; Instagram ads for high-ticket interior projects &mdash; in the right order, with exactly where to click.</p>
+    <div class="meta-grid">
+      <span><b>Website:</b> cornelianinteriors.com</span>
+      <span><b>Instagram:</b> @world_cornelian</span>
+      <span><b>Phone:</b> +91 97201 30734 / 92106 06620</span>
+      <span><b>Email:</b> cornelianexecutiveinteriors@gmail.com</span>
+      <span><b>Prepared:</b> August 2026</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <nav class="toc no-print-break">
+    <h2>What's inside</h2>
+    <ol>
+      <li><a href="#s1">How the pieces fit together</a><br><span class="t-desc">The funnel: Google Profile &rarr; Search Console &rarr; GA4 &rarr; Meta Pixel &rarr; Ads &rarr; WhatsApp</span></li>
+      <li><a href="#s2">Google Business Profile (GBP)</a><br><span class="t-desc">Create, claim, video-verify, categories, photos, posts, reviews</span></li>
+      <li><a href="#s3">Google Search Console (GSC)</a><br><span class="t-desc">Add property, verify, submit sitemap, read reports</span></li>
+      <li><a href="#s4">Google Analytics 4 (GA4)</a><br><span class="t-desc">Property + data stream, Measurement ID, mark <code>generate_lead</code> as Key Event</span></li>
+      <li><a href="#s5">Meta Pixel + Facebook/Instagram Ads</a><br><span class="t-desc">Dataset, Pixel ID, verify events, build the Lead campaign &amp; audiences</span></li>
+      <li><a href="#s6">Ad budget &amp; high-ticket strategy</a><br><span class="t-desc">1 quality lead/month for a 50L+ project &mdash; the real numbers</span></li>
+      <li><a href="#s7">The ad reel &amp; creative</a><br><span class="t-desc">Is Photoshop enough? (No) The right tools + a shot-by-shot storyboard</span></li>
+      <li><a href="#s8">Step-by-step execution checklist</a><br><span class="t-desc">The exact order to do everything, with checkboxes</span></li>
+    </ol>
+  </nav>
+
+  <!-- ============ SECTION 1 ============ -->
+  <section id="s1">
+    <h2><span class="num">1</span>How the pieces fit together</h2>
+    <p class="lead">Before touching any settings, understand the machine you're building. Each tool does one job, and they hand off to each other. Set them up in this order and nothing will be wasted.</p>
+
+    <div class="two-col">
+      <div>
+        <h4>The five tools</h4>
+        <ul>
+          <li><b>Google Business Profile (GBP)</b> &mdash; your free listing on Google Search &amp; Maps. This is where a Faridabad client searching &ldquo;luxury interior designer near me&rdquo; finds you.</li>
+          <li><b>Google Search Console (GSC)</b> &mdash; shows how your website appears in Google Search and lets you submit your sitemap so pages get indexed.</li>
+          <li><b>Google Analytics 4 (GA4)</b> &mdash; counts how many people visit the site and how many fill a form.</li>
+          <li><b>Meta Pixel</b> &mdash; a tiny piece of tracking on your site that tells Facebook/Instagram who visited and who became a lead, so ads can be optimised.</li>
+          <li><b>Meta Ads</b> &mdash; the paid campaigns that drive the right affluent people to the site.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Where leads land</h4>
+        <p>When someone submits a form on the website, the lead is saved to your database and you follow up by <b>phone / WhatsApp</b> (<code>wa.me/919720130734</code>). At the same moment the site fires:</p>
+        <ul>
+          <li>a GA4 event named <code>generate_lead</code> (counts as a conversion), and</li>
+          <li>a Meta <code>Lead</code> event (so ads learn who converts).</li>
+        </ul>
+        <p class="muted">You don't build these &mdash; they're already wired into the site. You only supply the IDs (Sections 4 &amp; 5).</p>
+      </div>
+    </div>
+
+    <h3>The funnel &mdash; how a stranger becomes a 50L+ project</h3>
+    <div class="funnel">
+      <div class="stage">
+        <div class="fbox fw-100">
+          <div class="fh">Meta Ads &nbsp;+&nbsp; Google Business Profile</div>
+          <div class="fs">Affluent NCR homeowners see your reel / find you on Maps</div>
+        </div>
+        <div class="farrow">&darr;</div>
+        <div class="fbox fw-85">
+          <div class="fh">Website visit &mdash; cornelianinteriors.com</div>
+          <div class="fs">GA4 counts the visitor &nbsp;&bull;&nbsp; Meta Pixel fires <code>PageView</code></div>
+        </div>
+        <div class="farrow">&darr;</div>
+        <div class="fbox fw-70">
+          <div class="fh">Browses projects &amp; the work</div>
+          <div class="fs">Pixel builds a retargeting audience of interested visitors</div>
+        </div>
+        <div class="farrow">&darr;</div>
+        <div class="fbox fw-55">
+          <div class="fh">Fills the enquiry form</div>
+          <div class="fs">GA4 <code>generate_lead</code> &nbsp;&bull;&nbsp; Meta <code>Lead</code> event fire</div>
+        </div>
+        <div class="farrow">&darr;</div>
+        <div class="fbox fw-40">
+          <div class="fh">You call / WhatsApp &rarr; 50L+ project</div>
+          <div class="fs">Qualify, meet, close</div>
+        </div>
+      </div>
+      <p class="side">Wide at the top (many see you), narrow at the bottom (few, but each worth 50&nbsp;lakh+). Your goal is a <b>steady ~1 qualified lead per month</b>, not volume.</p>
+    </div>
+
+    <div class="box key">
+      <span class="tag">Do this in order</span>
+      <p><b>GBP first</b> (free, slow to verify &mdash; start it today) &rarr; <b>GSC + GA4 + Meta Pixel</b> (the tracking foundation) &rarr; <b>creative</b> (the reel) &rarr; <b>launch ads last</b>. Never launch ads before the Pixel and GA4 are confirmed working, or you'll burn money blind. The full checklist is in Section 8.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2 ============ -->
+  <section id="s2">
+    <h2><span class="num">2</span>Google Business Profile (GBP)</h2>
+    <p class="kick">Your free listing on Google Search and Google Maps. For a Faridabad studio this is the single highest-value free asset &mdash; it's how someone searching &ldquo;interior designer in Faridabad&rdquo; or &ldquo;luxury home interiors NCR&rdquo; sees your photos, reviews, and phone number, and taps to call.</p>
+
+    <div class="box note">
+      <span class="tag">Why it matters here</span>
+      <p>High-ticket clients do their homework. A polished GBP with real project photos and genuine 5-star reviews is often what tips a 50L+ prospect from &ldquo;maybe&rdquo; to picking up the phone. It also feeds Google Maps, which is huge for local &ldquo;near me&rdquo; searches in Delhi NCR.</p>
+    </div>
+
+    <h3>Step-by-step: create &amp; claim</h3>
+    <ol class="steps">
+      <li><strong class="st">Sign in with the right Google account</strong>
+        Use the business Gmail (<code>cornelianexecutiveinteriors@gmail.com</code>) so ownership stays with the business, not a personal account.
+        <div class="where"><b>Go to:</b> google.com/business &rarr; <b>Manage now</b></div>
+      </li>
+      <li><strong class="st">Search for your business first</strong>
+        Type &ldquo;Cornelian Executive Interiors&rdquo;. If a listing already exists (someone may have created it, or Google auto-generated one), choose <b>Claim this business</b> instead of making a duplicate. If nothing shows, click <b>Add your business to Google</b>.
+      </li>
+      <li><strong class="st">Enter the business name &amp; category</strong>
+        Name exactly as you use it everywhere: <b>Cornelian Executive Interiors</b>. Pick the primary category <b>Interior designer</b>.
+      </li>
+      <li><strong class="st">Choose how you serve customers</strong>
+        Most interior studios pick <b>&ldquo;I deliver goods and services to my customers&rdquo;</b> (a service-area business) rather than showing a shopfront address. You can list your Faridabad office address for records but hide it, and instead show <b>service areas</b> (next steps).
+      </li>
+      <li><strong class="st">Add phone &amp; website</strong>
+        Phone <code>+91 97201 30734</code>, website <code>https://cornelianinteriors.com</code>. Keep the Name, Address, Phone (&ldquo;NAP&rdquo;) <b>identical</b> everywhere online &mdash; inconsistent NAP hurts local ranking.
+      </li>
+      <li><strong class="st">Start verification</strong>
+        Google will offer a verification method &mdash; increasingly this is <b>video verification</b> (see below). Start it now; approval can take a few days.
+      </li>
+    </ol>
+
+    <h3>Video verification (the common method now)</h3>
+    <p>Google frequently requires a single, unedited live video that proves (a) the business is real at its location and (b) you're authorised to manage it. You <b>must</b> record it live in the <b>Google Maps mobile app</b> &mdash; pre-recorded or edited clips are rejected.</p>
+    <ol class="steps">
+      <li><strong class="st">Open Google Maps app on your phone</strong>
+        Sign in with the same business Google account. Open your profile &rarr; tap <b>Get verified</b> &rarr; <b>Video verification</b>.
+        <div class="where"><b>Note:</b> desktop cannot do video verification &mdash; phone only</div>
+      </li>
+      <li><strong class="st">Plan your ~50-second path before filming</strong>
+        Aim for one continuous clip of <b>45&ndash;55 seconds</b>, good lighting, steady hands, no cuts.
+      </li>
+      <li><strong class="st">Show these things, in one take</strong>
+        <ul>
+          <li>A nearby <b>street sign / building number</b> to confirm location.</li>
+          <li>Your <b>office / studio signage or entrance</b>, then walk inside to show access.</li>
+          <li>Your <b>workspace</b> &mdash; material samples, mood boards, 3D renders on screen, furniture pieces &mdash; to prove real design activity.</li>
+          <li>Briefly, <b>one business document</b> (business card, GST/registration, a letterhead) with personal details covered.</li>
+        </ul>
+      </li>
+      <li><strong class="st">Submit and wait</strong>
+        The video uploads straight after recording. Approval usually arrives by <b>email</b> within a few days. If rejected, re-shoot with clearer location proof.
+      </li>
+    </ol>
+    <div class="box warn">
+      <span class="tag">Don't</span>
+      <p>Don't edit the video, don't stitch clips, and make sure the address on your profile <b>matches the location you film</b> &mdash; Google cross-checks Street View. Mismatches are the #1 cause of rejection.</p>
+    </div>
+
+    <h3>Categories to set</h3>
+    <p>One <b>primary</b> category plus a few <b>additional</b> ones. Suggested:</p>
+    <ul>
+      <li><b>Primary:</b> Interior designer</li>
+      <li><b>Additional:</b> Interior architect office &middot; Interior decorator &middot; Interior fitting contractor &middot; Furniture maker / manufacturer (if you do custom furniture) &middot; Home renovation contractor</li>
+    </ul>
+    <p class="muted">Only add categories you genuinely deliver &mdash; irrelevant categories dilute ranking.</p>
+
+    <h3>Service areas</h3>
+    <p>Add the localities you actually take projects in. For a Faridabad luxury studio: <b>Faridabad</b>, <b>Greater Faridabad</b>, <b>South Delhi</b>, <b>Gurugram</b>, <b>Noida</b>, and <b>Greater Noida</b>. You can list up to ~20 areas; keep them to genuinely serviceable NCR zones.</p>
+
+    <h3>Photos &amp; video</h3>
+    <ul>
+      <li>Upload <b>15&ndash;25 high-resolution photos</b> of finished projects &mdash; living rooms, kitchens, wardrobes, false ceilings, lighting details.</li>
+      <li>Add a <b>logo</b> and a <b>cover photo</b> (your best hero shot).</li>
+      <li>Include 2&ndash;3 short <b>videos</b> (walkthroughs / 3D renders).</li>
+      <li>Name files descriptively before upload (e.g. <code>luxury-living-room-faridabad.jpg</code>) and refresh photos monthly.</li>
+    </ul>
+
+    <h3>Posts (free mini-updates)</h3>
+    <p>Use the <b>Posts</b> / <b>Updates</b> feature like a mini social feed &mdash; post a finished project or an offer every 1&ndash;2 weeks. Each post can link straight to a project page or the contact form. Posts keep the profile &ldquo;active,&rdquo; which Google rewards.</p>
+
+    <h3>Reviews strategy (critical for high-ticket)</h3>
+    <ol class="steps">
+      <li><strong class="st">Ask every happy client, personally</strong>
+        After handover, send them your <b>review short-link</b> (GBP gives you one under <b>&ldquo;Ask for reviews&rdquo;</b>) over WhatsApp with a one-line request.</li>
+      <li><strong class="st">Make it specific</strong>
+        Ask them to mention the <b>locality and project type</b> (e.g. &ldquo;full home interior in Faridabad&rdquo;) &mdash; keyword-rich reviews help local ranking.</li>
+      <li><strong class="st">Reply to every review</strong>
+        Thank each reviewer by name within a couple of days. Reply politely and factually to any negative review &mdash; prospects read your responses.</li>
+      <li><strong class="st">Aim for a steady trickle</strong>
+        For luxury, <b>quality and recency beat quantity</b>. A handful of detailed recent 5-star reviews with photos outperforms dozens of one-word ones.</li>
+    </ol>
+    <div class="box tip">
+      <span class="tag">Tip</span>
+      <p>Never buy fake reviews &mdash; Google detects and removes them and can suspend the profile. For a 50L+ studio, one suspension can cost you months of visibility.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3 ============ -->
+  <section id="s3">
+    <h2><span class="num">3</span>Google Search Console (GSC)</h2>
+    <p class="kick">A free Google tool that shows how your website appears in Google Search &mdash; which queries show your site, how many clicks you get, and whether your pages are indexed. You'll also submit your sitemap here so Google discovers every page.</p>
+
+    <h3>Step 1 &mdash; Add a property: Domain vs URL-prefix</h3>
+    <div class="two-col">
+      <div class="box note" style="margin-top:6px">
+        <span class="tag">Recommended</span>
+        <p><b>Domain property</b> (<code>cornelianinteriors.com</code>). It covers every version &mdash; <code>http</code>/<code>https</code>, <code>www</code>/non-<code>www</code>, and all subdomains &mdash; in one place. It's the most complete view and is verified once via DNS.</p>
+      </div>
+      <div class="box" style="margin-top:6px">
+        <span class="tag" style="color:var(--muted)">Alternative</span>
+        <p><b>URL-prefix property</b> tracks only one exact address (e.g. <code>https://cornelianinteriors.com/</code>). Use this only if you can't access DNS &mdash; it also unlocks the HTML meta-tag verification method.</p>
+      </div>
+    </div>
+    <div class="where"><b>Go to:</b> search.google.com/search-console &rarr; <b>Add property</b></div>
+
+    <h3>Step 2 &mdash; Verify ownership</h3>
+    <h4>Option A &mdash; DNS TXT (required for a Domain property, most stable)</h4>
+    <ol class="steps">
+      <li><strong class="st">Choose Domain &amp; copy the TXT record</strong>
+        GSC shows a record like <code>google-site-verification=xxxxxxxx</code>.</li>
+      <li><strong class="st">Add it at your DNS host</strong>
+        The site's DNS is managed at <b>Vercel</b> (or your registrar). Add a new <b>TXT</b> record: <b>Name/Host</b> = <code>@</code> (or blank), <b>Value</b> = the string GSC gave you. Save.
+        <div class="where"><b>Vercel:</b> Project &rarr; <b>Settings</b> &rarr; <b>Domains</b> / DNS &rarr; add TXT record</div>
+      </li>
+      <li><strong class="st">Wait, then Verify</strong>
+        DNS can take minutes to ~48 hours. Come back to GSC and click <b>Verify</b>. <b>Leave the TXT record in place forever</b> &mdash; if you delete it, you lose access.</li>
+    </ol>
+    <h4>Option B &mdash; HTML meta tag (for a URL-prefix property)</h4>
+    <p>The site already supports a Google verification meta tag via the environment variable <code>VITE_GSC_VERIFICATION</code>. If you go the URL-prefix route:</p>
+    <ol class="steps">
+      <li><strong class="st">Copy the code from the meta-tag option</strong>
+        GSC shows <code>&lt;meta name="google-site-verification" content="XXXX" /&gt;</code>. Copy just the <b>content</b> value (<code>XXXX</code>).</li>
+      <li><strong class="st">Set it in Vercel and redeploy</strong>
+        Add <code>VITE_GSC_VERIFICATION = XXXX</code> in Vercel env vars, then redeploy. The site injects the meta tag into every page's <code>&lt;head&gt;</code>.
+        <div class="where"><b>Vercel:</b> Project &rarr; Settings &rarr; Environment Variables &rarr; Add &rarr; Redeploy</div>
+      </li>
+      <li><strong class="st">Click Verify in GSC</strong></li>
+    </ol>
+    <div class="box tip"><span class="tag">Which to pick</span><p>If you (or the developer) can edit DNS in Vercel, do the <b>Domain property + DNS TXT</b> &mdash; it's cleaner and covers everything. Only fall back to the meta tag if DNS is out of reach.</p></div>
+
+    <h3>Step 3 &mdash; Submit your sitemap</h3>
+    <ol class="steps">
+      <li><strong class="st">Open Sitemaps</strong>
+        <div class="where"><b>GSC left menu:</b> Indexing &rarr; <b>Sitemaps</b></div>
+      </li>
+      <li><strong class="st">Add the sitemap URL</strong>
+        Enter <code>sitemap.xml</code> (full URL <code>https://cornelianinteriors.com/sitemap.xml</code> &mdash; it already exists) and click <b>Submit</b>. Status should become <b>Success</b> within a day or two.</li>
+    </ol>
+
+    <h3>Step 4 &mdash; Reading the reports</h3>
+    <table>
+      <thead><tr><th>Report</th><th>What it tells you</th><th>What to watch</th></tr></thead>
+      <tbody>
+        <tr><td><b>Performance</b></td><td>Search queries, clicks, impressions, average position</td><td>Which searches bring visitors (e.g. &ldquo;interior designer Faridabad&rdquo;). Rising impressions = growing visibility.</td></tr>
+        <tr><td><b>Pages (Indexing)</b></td><td>Which pages Google has indexed vs excluded</td><td>Make sure key pages (home, projects) are <b>Indexed</b>. Fix anything marked with errors.</td></tr>
+        <tr><td><b>Sitemaps</b></td><td>Sitemap read status &amp; discovered URLs</td><td>Status = Success; URL count matches your pages.</td></tr>
+        <tr><td><b>Experience / Core Web Vitals</b></td><td>Page speed &amp; mobile usability</td><td>Green is good; reds can hurt ranking.</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Give it 1&ndash;2 weeks to gather data before drawing conclusions. Check GSC ~once a week.</p>
+  </section>
+
+  <!-- ============ SECTION 4 ============ -->
+  <section id="s4">
+    <h2><span class="num">4</span>Google Analytics 4 (GA4)</h2>
+    <p class="kick">Free tool that answers your two core questions: <b>how many people reach the website</b>, and <b>how many fill a form</b> (conversions). The site is already built to load GA4 automatically once you provide the Measurement ID.</p>
+
+    <h3>Step 1 &mdash; Create account, property &amp; web data stream</h3>
+    <ol class="steps">
+      <li><strong class="st">Create a GA4 account</strong>
+        Sign in with the business Google account.
+        <div class="where"><b>Go to:</b> analytics.google.com &rarr; <b>Admin</b> (gear, bottom-left) &rarr; <b>Create</b> &rarr; Account</div>
+      </li>
+      <li><strong class="st">Create a property</strong>
+        Name it <b>Cornelian Executive Interiors</b>. Set reporting time zone to <b>(GMT+05:30) India</b> and currency to <b>INR</b>.
+        <div class="where"><b>Admin &rarr;</b> Create &rarr; <b>Property</b></div>
+      </li>
+      <li><strong class="st">Add a Web data stream</strong>
+        Choose <b>Web</b>, enter the site URL <code>https://cornelianinteriors.com</code>, name the stream, and create it.
+        <div class="where"><b>Admin &rarr;</b> Data collection &amp; modification &rarr; <b>Data streams</b> &rarr; Add stream &rarr; Web</div>
+      </li>
+      <li><strong class="st">Copy the Measurement ID</strong>
+        It looks like <code>G-XXXXXXXXXX</code> (top-right of the data stream). This is the number the site needs.
+        <div class="where"><b>Not the Property ID</b> (a plain number) &mdash; you want the <b>G-</b> one</div>
+      </li>
+    </ol>
+
+    <h3>Step 2 &mdash; Put the Measurement ID on the site</h3>
+    <div class="box key">
+      <span class="tag">You don't touch code</span>
+      <p>The site loads Google's <code>gtag</code> automatically from an environment variable. You only paste the ID and redeploy.</p>
+    </div>
+    <ol class="steps">
+      <li><strong class="st">Open Vercel env vars</strong>
+        <div class="where"><b>Vercel:</b> Project &rarr; <b>Settings</b> &rarr; <b>Environment Variables</b></div>
+      </li>
+      <li><strong class="st">Add the variable</strong>
+        Name <code>VITE_GA_ID</code>, value <code>G-XXXXXXXXXX</code> (your ID). Apply to <b>Production</b> (and Preview if you like). Save.</li>
+      <li><strong class="st">Redeploy</strong>
+        Env vars only take effect on a fresh build. Trigger a redeploy from the <b>Deployments</b> tab (Redeploy the latest). After it's live, open the site &mdash; GA4 should start showing you in <b>Realtime</b>.</li>
+    </ol>
+
+    <h3>Step 3 &mdash; Mark <code>generate_lead</code> as a Key Event (conversion)</h3>
+    <p>When a form is submitted the site fires a GA4 event named <code>generate_lead</code>. GA4 now calls conversions <b>&ldquo;Key Events.&rdquo;</b> You must switch it on &mdash; and it only starts counting <b>from the moment you turn it on</b> (no backfill).</p>
+    <ol class="steps">
+      <li><strong class="st">Submit one test lead first</strong>
+        Fill out a form on the live site once, so GA4 has seen the <code>generate_lead</code> event and it appears in the events list (can take a few hours to show).</li>
+      <li><strong class="st">Find the event</strong>
+        <div class="where"><b>Admin &rarr;</b> Data display &rarr; <b>Events</b></div>
+      </li>
+      <li><strong class="st">Toggle it on</strong>
+        Find <code>generate_lead</code> and switch on <b>Mark as key event</b> (the toggle / star). Done &mdash; it now counts as a conversion.</li>
+      <li><strong class="st">If it isn't listed yet</strong>
+        You can pre-create it: <b>Admin &rarr; Events &rarr; Create event</b>, or just wait until the test lead appears, then toggle. (Up to 30 key events allowed per property.)</li>
+    </ol>
+
+    <h3>Step 4 &mdash; Link GA4 with Search Console</h3>
+    <ol class="steps">
+      <li><strong class="st">Open the GSC link</strong>
+        <div class="where"><b>Admin &rarr;</b> Product links &rarr; <b>Search Console links</b> &rarr; Link</div>
+      </li>
+      <li><strong class="st">Pick your verified GSC property</strong>
+        Choose <code>cornelianinteriors.com</code>, associate it with your web stream, confirm. Now organic-search data appears inside GA4.</li>
+    </ol>
+
+    <h3>Reports to watch weekly</h3>
+    <table>
+      <thead><tr><th>Report</th><th>Where</th><th>What good looks like</th></tr></thead>
+      <tbody>
+        <tr><td><b>Realtime</b></td><td>Reports &rarr; Realtime</td><td>Confirms tracking is live (use right after redeploy).</td></tr>
+        <tr><td><b>Users / Traffic acquisition</b></td><td>Reports &rarr; Acquisition</td><td>How many visitors and where from (Paid Social = your Meta ads, Organic Search, Direct).</td></tr>
+        <tr><td><b>Key events (conversions)</b></td><td>Reports &rarr; Engagement</td><td>Count of <code>generate_lead</code> &mdash; your actual leads from the site.</td></tr>
+        <tr><td><b>Pages &amp; screens</b></td><td>Reports &rarr; Engagement</td><td>Which project pages hold attention (make more content like the winners).</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ SECTION 5 ============ -->
+  <section id="s5">
+    <h2><span class="num">5</span>Meta Pixel + Facebook / Instagram Ads</h2>
+    <p class="kick">The Meta Pixel (Meta now calls it a <b>dataset</b>) is tracking that tells Facebook &amp; Instagram who visited your site and who became a lead, so the ad algorithm can find more people like your leads. Then you build the campaign itself.</p>
+
+    <h3>Step 1 &mdash; Create the Pixel / dataset &amp; get the Pixel ID</h3>
+    <ol class="steps">
+      <li><strong class="st">Open Meta Business Suite &amp; Events Manager</strong>
+        Sign in / create a free Business account.
+        <div class="where"><b>Go to:</b> business.facebook.com &rarr; <b>Events Manager</b></div>
+      </li>
+      <li><strong class="st">Connect a web data source</strong>
+        Click <b>Connect data</b> &rarr; choose <b>Web</b> &rarr; <b>Meta Pixel</b> &rarr; Connect.</li>
+      <li><strong class="st">Name it</strong>
+        e.g. <b>Cornelian Website Pixel</b> (not the default name). Enter the site URL when asked.</li>
+      <li><strong class="st">Copy the Pixel ID</strong>
+        After <b>Create</b>, a long number appears &mdash; that's your <b>Pixel ID = dataset ID</b>. Copy it.</li>
+    </ol>
+
+    <h3>Step 2 &mdash; Put the Pixel ID on the site</h3>
+    <div class="box key"><span class="tag">Same pattern as GA4</span><p>No code needed &mdash; the site loads Meta's <code>fbq</code> from an env var.</p></div>
+    <ol class="steps">
+      <li><strong class="st">Add the env var in Vercel</strong>
+        Name <code>VITE_META_PIXEL_ID</code>, value = your Pixel ID number.
+        <div class="where"><b>Vercel:</b> Project &rarr; Settings &rarr; Environment Variables</div>
+      </li>
+      <li><strong class="st">Redeploy</strong>
+        Redeploy so it takes effect. The site now fires <code>PageView</code> on every page and a <code>Lead</code> event on form submit.</li>
+    </ol>
+
+    <h3>Step 3 &mdash; Verify events are firing</h3>
+    <ol class="steps">
+      <li><strong class="st">Install Meta Pixel Helper</strong>
+        Add the free <b>Meta Pixel Helper</b> Chrome extension. Open your live site &mdash; it should show a green tick and the Pixel ID with a <code>PageView</code>.</li>
+      <li><strong class="st">Use Test Events</strong>
+        <div class="where"><b>Events Manager &rarr;</b> your dataset &rarr; <b>Test Events</b> &rarr; enter your site URL</div>
+        Browse the site and submit a test form. You should see <code>PageView</code> and then <code>Lead</code> appear in real time.</li>
+      <li><strong class="st">Confirm in the Overview</strong>
+        Within a day the <b>Overview</b> tab shows <code>PageView</code> and <code>Lead</code> event counts &mdash; proof it's working.</li>
+    </ol>
+
+    <h3>Step 4 &mdash; Verify your domain (recommended)</h3>
+    <p>Domain verification proves you own <code>cornelianinteriors.com</code> and protects your event setup. <span class="muted">(As of June 2025 it's no longer strictly required for event measurement / optimisation &mdash; Meta's Aggregated Event Measurement is now automatic &mdash; but it's still recommended for link ownership.)</span></p>
+    <ol class="steps">
+      <li><strong class="st">Open Brand safety / Domains</strong>
+        <div class="where"><b>Business Settings &rarr;</b> Brand safety &rarr; <b>Domains</b> &rarr; Add &rarr; enter <code>cornelianinteriors.com</code></div>
+      </li>
+      <li><strong class="st">Add the TXT record at your DNS</strong>
+        Meta shows <code>facebook-domain-verification=xxxxxxxx</code>. Add it as a <b>TXT</b> record in Vercel DNS (copy exactly, no quotes/spaces), wait for propagation, then click <b>Verify</b>.</li>
+    </ol>
+
+    <h3>Step 5 &mdash; Build the Lead / Conversions campaign</h3>
+    <ol class="steps">
+      <li><strong class="st">Create the campaign</strong>
+        <div class="where"><b>Go to:</b> Ads Manager (adsmanager.facebook.com) &rarr; <b>Create</b></div>
+        Choose objective <b>Leads</b>, then optimise for <b>website conversions using your Pixel</b> (drive people to the site form) rather than Instant Forms &mdash; site leads are higher-intent for high-ticket work. <span class="muted">(You can test Instant Forms later; site-form leads usually qualify better.)</span></li>
+      <li><strong class="st">Set the conversion event</strong>
+        At the ad-set level pick your Pixel/dataset and the <b>Lead</b> event as the optimisation event. This tells Meta to find people likely to submit the form.</li>
+      <li><strong class="st">Budget &amp; schedule</strong>
+        Start with a daily budget (see Section 6). Run continuously &mdash; don't switch ads off every few days; the algorithm needs a stable learning period.</li>
+      <li><strong class="st">Build the audience (below)</strong></li>
+      <li><strong class="st">Placements</strong>
+        Start with <b>Advantage+ placements</b> (Meta auto-optimises across Feed, Reels, Stories, Explore). Ensure you upload the right aspect ratios (Section 7) so the reel looks great everywhere.</li>
+      <li><strong class="st">Publish &amp; confirm tracking</strong>
+        After publishing, check the first day that the <b>Lead</b> event is being attributed in Ads Manager.</li>
+    </ol>
+
+    <h3>Audiences for a high-ticket NCR studio</h3>
+    <table>
+      <thead><tr><th>Audience</th><th>How to build it</th><th>Use for</th></tr></thead>
+      <tbody>
+        <tr><td><b>Cold &mdash; geo + affluence</b></td><td>Location: <b>Faridabad + South Delhi + Gurugram + Noida</b> (drop a radius pin or select cities). Layer interests/behaviours: <em>luxury real estate, interior design, architecture, high-end furniture brands, luxury home d&eacute;cor,</em> homeowners, and (where available) higher-income / frequent-travel behaviours.</td><td>Top of funnel &mdash; finding new affluent homeowners.</td></tr>
+        <tr><td><b>Retargeting &mdash; site visitors</b></td><td>Custom Audience from Pixel: <em>all website visitors, last 90 days</em>, and a separate one for <em>project-page viewers</em>.</td><td>Warm follow-up &mdash; cheapest, highest-converting. Show them a &ldquo;book a consultation&rdquo; ad.</td></tr>
+        <tr><td><b>Retargeting &mdash; engagers</b></td><td>Custom Audience of people who engaged with your Instagram/Facebook or watched 50%+ of a reel.</td><td>Nurture people who liked the content but didn't visit.</td></tr>
+        <tr><td><b>Lookalike (LLA)</b></td><td>1&ndash;3% Lookalike of your <b>Lead</b> event or website converters (build once you have enough leads/visitors).</td><td>Scale &mdash; find new people similar to your best prospects.</td></tr>
+      </tbody>
+    </table>
+    <div class="box tip"><span class="tag">Because volume is low</span><p>Keep the cold audience <b>tight</b> (affluent NCR only). A smaller, precise audience costs more per 1,000 views but delivers the <em>right</em> 50L+ prospects instead of cheap, unqualified clicks.</p></div>
+  </section>
+
+  <!-- ============ SECTION 6 ============ -->
+  <section id="s6">
+    <h2><span class="num">6</span>Ad budget &amp; strategy for high-ticket <span class="pill">1 lead / month &middot; 50L+</span></h2>
+    <p class="lead">Your goal is unusual and it's smart: you don't want <em>many</em> leads &mdash; you want <b>~1 genuinely qualified lead a month</b> that can become a <b>₹50,00,000+ project</b>. That completely changes what &ldquo;good&rdquo; ad numbers look like. A high cost-per-lead is totally fine here.</p>
+
+    <div class="box note">
+      <span class="tag">Researched market ranges (India / Delhi NCR, 2025&ndash;26) &mdash; label: ranges, not quotes</span>
+      <p>Real-estate / premium-home advertising is one of the most competitive, highest-cost categories on Meta in India. Independent 2025&ndash;26 benchmarks put <b>CPM ≈ ₹150&ndash;₹400+</b> for Tier-1 affluent targeting (high-income targeting runs ~25&ndash;50% above median CPM), <b>CPC ≈ ₹3&ndash;₹8+</b> for real estate, and <b>CPL ≈ ₹500&ndash;₹1,400</b> for ordinary property enquiries. For <b>luxury</b>, smaller audiences push cost-per-lead much higher &mdash; expect a <b>qualified</b> luxury interior enquiry to cost meaningfully more (often several thousand rupees each). Treat all figures as ranges for planning, not guarantees.</p>
+    </div>
+
+    <h3>The math &mdash; why even an expensive lead is a bargain here</h3>
+    <p>One project = <b>₹50,00,000+</b> in revenue. Say your gross margin is a conservative 25% &rarr; <b>₹12,50,000</b> gross profit per project. Now look at what leads can cost:</p>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>If cost per qualified lead is…</th><th class="num">Leads to close 1 project*</th><th class="num">Total ad spend to win it</th><th class="num">As % of a 50L project</th></tr></thead>
+      <tbody>
+        <tr><td>₹1,500 (optimistic)</td><td class="num">~10</td><td class="num">₹15,000</td><td class="num">0.03%</td></tr>
+        <tr><td>₹4,000 (realistic luxury)</td><td class="num">~10</td><td class="num">₹40,000</td><td class="num">0.08%</td></tr>
+        <tr><td>₹8,000 (premium/tight audience)</td><td class="num">~10</td><td class="num">₹80,000</td><td class="num">0.16%</td></tr>
+        <tr><td>₹15,000 (worst case)</td><td class="num">~10</td><td class="num">₹1,50,000</td><td class="num">0.30%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="muted">*Assumes a cautious ~10% lead-to-project close rate for high-ticket. Even spending <b>₹1.5 lakh</b> in ads to land one ₹50 lakh project is a ~30&times; return on ad spend. This is why, for you, <b>lead quality beats lead cost every time.</b></p>
+
+    <div class="box key"><span class="tag">The honest truth</span><p>Luxury lead cost is <b>high</b> and volume is <b>intentionally low</b> &mdash; that's the correct strategy, not a problem. Don't panic if a lead costs ₹5,000&ndash;₹15,000. Panic only if the leads are the wrong people (renters, tiny budgets, other cities). Optimise for <em>fit</em>, not for cheapness.</p></div>
+
+    <h3>Monthly budget plan</h3>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Plan</th><th class="num">Daily</th><th class="num">Monthly</th><th>What it's for</th><th>Realistic outcome</th></tr></thead>
+      <tbody>
+        <tr><td><b>Test / Learn</b></td><td class="num">₹800&ndash;₹1,200</td><td class="num">₹25k&ndash;₹35k</td><td>Prove the funnel works; test 2&ndash;3 creatives &amp; audiences</td><td>Learnings + a first lead or two; find the winning ad</td></tr>
+        <tr><td><b>Steady / Optimise</b></td><td class="num">₹1,500&ndash;₹2,500</td><td class="num">₹45k&ndash;₹75k</td><td>Run the winner + retargeting; aim for the ~1 quality lead/month</td><td>1&ndash;3 qualified enquiries/month</td></tr>
+        <tr><td><b>Scale</b></td><td class="num">₹3,000&ndash;₹5,000+</td><td class="num">₹90k&ndash;₹1.5L+</td><td>Add lookalikes &amp; more geos once ROI is proven</td><td>2&ndash;4+ qualified enquiries/month</td></tr>
+        <tr class="total-row"><td>Recommended start</td><td class="num">~₹1,000</td><td class="num">~₹30,000</td><td colspan="2">Begin at Test/Learn for Month 1, then step up only after you see qualified leads.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="muted">Meta needs a minimum of roughly ₹500/day per ad set to exit &ldquo;learning.&rdquo; Don't split ₹1,000/day across five ad sets &mdash; concentrate it.</p>
+
+    <h3>Phased 90-day plan</h3>
+    <ol class="steps">
+      <li><strong class="st">Month 1 &mdash; Test &amp; learn</strong>
+        Run 2&ndash;3 creatives (at least one reel) to the cold affluent-NCR audience at ~₹1,000/day. Goal: confirm Pixel + Lead tracking, learn which creative and audience gets the best <em>quality</em> replies. Judge on lead <b>fit</b>, not just count.</li>
+      <li><strong class="st">Month 2 &mdash; Optimise</strong>
+        Kill losers, double down on the winning ad. Turn on <b>retargeting</b> of website visitors and IG engagers (your cheapest conversions). Tighten targeting toward the localities/interests that produced real prospects.</li>
+      <li><strong class="st">Month 3 &mdash; Scale &amp; retarget</strong>
+        Build a <b>1&ndash;3% Lookalike</b> of leads/converters, raise budget on what works, expand geos carefully. Keep retargeting running always &mdash; it's the highest-ROI slice.</li>
+    </ol>
+
+    <h3>Lead-quality qualification tips</h3>
+    <ul>
+      <li>Add a qualifying question to the form or first WhatsApp reply: <b>budget range, property size/type, and locality.</b></li>
+      <li>Prioritise <b>owned homes / new possessions in premium NCR projects</b> and full-home scopes over single-room jobs.</li>
+      <li>Respond within minutes &mdash; high-ticket prospects contact several studios; speed wins.</li>
+      <li>Track which <b>ad / audience</b> each closed client came from and feed that back into targeting.</li>
+      <li>Don't judge a campaign on 3&ndash;4 leads. Give each test ~2 weeks and enough spend to be statistically meaningful.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SECTION 7 ============ -->
+  <section id="s7">
+    <h2><span class="num">7</span>The ad reel &amp; creative</h2>
+
+    <div class="box warn">
+      <span class="tag">Your question: is Photoshop enough for an &ldquo;extraordinary reel&rdquo;?</span>
+      <p><b>No.</b> Adobe Photoshop is a <b>photo / still-image editor</b> &mdash; it's brilliant for retouching a single render or making a poster, but it does <b>not</b> edit <em>video</em>. A reel is video: clips, cuts, motion, music, captions and timing. Photoshop can't do that. You need a proper <b>video editor</b>. Use Photoshop only to polish individual still frames or thumbnails that you then drop into the video editor.</p>
+    </div>
+
+    <h3>The right tools</h3>
+    <table>
+      <thead><tr><th>Tool</th><th>Cost</th><th>Best for</th><th>Verdict for you</th></tr></thead>
+      <tbody>
+        <tr><td><b>CapCut</b> (mobile/desktop)</td><td>Free (paid Pro)</td><td>Fast, social-first reels; drag-and-drop; auto-captions, trendy transitions &amp; music</td><td><b>Start here.</b> Fastest way to a great reel with no experience.</td></tr>
+        <tr><td><b>DaVinci Resolve</b></td><td><b>Free</b> (Studio paid)</td><td>Pro editing + best-in-class colour grading; makes interiors look cinematic</td><td>Best <b>free pro</b> option when you want cinematic quality.</td></tr>
+        <tr><td><b>Adobe Premiere Pro</b></td><td>Paid (subscription)</td><td>Industry-standard precision editing, Lumetri colour, Adobe integration</td><td>The pro standard &mdash; ideal if you hire an editor.</td></tr>
+        <tr><td><b>Adobe After Effects</b></td><td>Paid</td><td>Motion graphics, animated text, logo animation, 3D-render fly-throughs</td><td>Add-on for fancy titles/animation &mdash; not the main editor.</td></tr>
+        <tr><td><b>Adobe Photoshop</b></td><td>Paid</td><td>Still photos, single-render retouch, thumbnails</td><td>Supporting role only &mdash; <b>not</b> a video tool.</td></tr>
+      </tbody>
+    </table>
+    <div class="box tip"><span class="tag">Recommended workflow</span><p>Edit the reel in <b>CapCut</b> (fast) or <b>DaVinci Resolve</b> (free + cinematic). Use <b>After Effects</b> only if you want animated titles or an animated logo. Use <b>Photoshop</b> only to touch up still render frames. Your existing <b>3D renders</b> + a screen-recorded <b>scroll-through of the website</b> are excellent B-roll &mdash; mix them with real project footage.</p></div>
+
+    <h3>Aspect ratios &mdash; export these</h3>
+    <table>
+      <thead><tr><th>Ratio</th><th>Pixels</th><th>Where it runs</th></tr></thead>
+      <tbody>
+        <tr><td><b>9:16 (vertical)</b></td><td>1080 &times; 1920</td><td>Reels, Stories &mdash; <b>your primary format</b></td></tr>
+        <tr><td><b>4:5 (portrait)</b></td><td>1080 &times; 1350</td><td>Feed &mdash; takes more screen than square</td></tr>
+        <tr><td><b>1:1 (square)</b></td><td>1080 &times; 1080</td><td>Feed / Explore, versatile fallback</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">In DaVinci Resolve set the timeline to <b>1080&times;1920</b> for reels. Keep important content in the centre &ldquo;safe zone&rdquo; so captions/UI don't cover it.</p>
+
+    <h3>Shot-by-shot storyboard &mdash; 15&ndash;30s luxury interiors reel</h3>
+    <div class="shots">
+      <div class="shot"><div class="time">0&ndash;3s</div><div class="desc"><b>HOOK &mdash; the reveal</b><span>Slow push-in on a stunning finished living room (real footage or 3D render). Bold on-screen text: &ldquo;A 4BHK in Faridabad, reimagined.&rdquo; Grab attention in the first second &mdash; most viewers decide here.</span></div></div>
+      <div class="shot"><div class="time">3&ndash;7s</div><div class="desc"><b>BEFORE &rarr; AFTER</b><span>Quick transition from a bare/under-construction shot to the finished space. This contrast is the single most persuasive moment for interiors.</span></div></div>
+      <div class="shot"><div class="time">7&ndash;14s</div><div class="desc"><b>DETAILS montage</b><span>3&ndash;4 fast, satisfying clips on the beat: a wardrobe opening, marble &amp; brass textures, statement lighting, a kitchen pan. Show craftsmanship and materials.</span></div></div>
+      <div class="shot"><div class="time">14&ndash;20s</div><div class="desc"><b>SCALE / lifestyle</b><span>A wide cinematic pan of the whole home, or a smooth walkthrough. Convey the premium, spacious feel a 50L+ client is buying.</span></div></div>
+      <div class="shot"><div class="time">20&ndash;25s</div><div class="desc"><b>TRUST</b><span>Quick flash of your logo, a one-line testimonial, and &ldquo;Full-home interiors &middot; Delhi NCR.&rdquo; Optional: 1&ndash;2s screen-record scrolling cornelianinteriors.com.</span></div></div>
+      <div class="shot"><div class="time">25&ndash;30s</div><div class="desc"><b>CALL TO ACTION</b><span>End card: &ldquo;Book a design consultation&rdquo; + phone/DM. Clear, calm, confident. Keep the logo on screen.</span></div></div>
+    </div>
+
+    <h3>Music, pacing &amp; captions</h3>
+    <ul>
+      <li><b>Pacing:</b> cut on the beat. Faster cuts in the details montage, slower on the hero wide shots. Total 15&ndash;30s &mdash; shorter often performs better.</li>
+      <li><b>Music:</b> elegant, cinematic, or a tasteful trending audio &mdash; nothing loud/cheap. In ads, most people watch on mute, so it must work silently too.</li>
+      <li><b>Captions:</b> add on-screen text/subtitles (CapCut auto-captions) since sound is often off. Keep text short and in the safe zone.</li>
+      <li><b>Colour:</b> grade warm and rich (DaVinci/Premiere Lumetri) so interiors look luxurious, not flat phone-camera footage.</li>
+      <li><b>Quality:</b> shoot in the best light you can, stabilise the camera (gimbal or steady hands), and always export at 1080p+.</li>
+    </ul>
+
+    <h4>Hook ideas (first 3 seconds)</h4>
+    <ul>
+      <li>&ldquo;This is what a ₹50 lakh interior actually looks like.&rdquo;</li>
+      <li>&ldquo;We turned this empty flat into a Faridabad showpiece.&rdquo;</li>
+      <li>&ldquo;POV: you just walked into your new home.&rdquo;</li>
+      <li>&ldquo;3 details that separate luxury interiors from ordinary ones.&rdquo;</li>
+      <li>Straight before/after cut with no words &mdash; let the transformation hook them.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SECTION 8 ============ -->
+  <section id="s8">
+    <h2><span class="num">8</span>Step-by-step execution checklist</h2>
+    <p class="kick">Do it in this order. Tick each box as you go. GBP first (it takes days to verify), then the tracking foundation, then creative, then launch.</p>
+
+    <div class="phase-h">Phase 1 &middot; Google Business Profile (start today)</div>
+    <ul class="checklist">
+      <li><span class="cb"></span><span class="ct">Create / claim the profile with the business Gmail<small>google.com/business</small></span></li>
+      <li><span class="cb"></span><span class="ct">Set primary category <b>Interior designer</b> + additional categories</span></li>
+      <li><span class="cb"></span><span class="ct">Add phone, website, and NCR service areas (Faridabad, S. Delhi, Gurugram, Noida)</span></li>
+      <li><span class="cb"></span><span class="ct">Complete <b>video verification</b> in the Google Maps app<small>45&ndash;55s, live, unedited</small></span></li>
+      <li><span class="cb"></span><span class="ct">Upload 15&ndash;25 project photos + logo + cover + 2&ndash;3 videos</span></li>
+      <li><span class="cb"></span><span class="ct">Publish first Post; set a fortnightly posting reminder</span></li>
+      <li><span class="cb"></span><span class="ct">Send review requests to recent happy clients</span></li>
+    </ul>
+
+    <div class="phase-h">Phase 2 &middot; Tracking foundation (GSC + GA4 + Pixel)</div>
+    <ul class="checklist">
+      <li><span class="cb"></span><span class="ct">GSC: add <b>Domain property</b> &amp; verify via DNS TXT in Vercel</span></li>
+      <li><span class="cb"></span><span class="ct">GSC: submit <code>sitemap.xml</code></span></li>
+      <li><span class="cb"></span><span class="ct">GA4: create property + web data stream; copy <code>G-XXXX</code> Measurement ID</span></li>
+      <li><span class="cb"></span><span class="ct">Set <code>VITE_GA_ID</code> in Vercel &amp; <b>redeploy</b>; confirm in GA4 Realtime</span></li>
+      <li><span class="cb"></span><span class="ct">Meta: create Pixel/dataset; copy Pixel ID</span></li>
+      <li><span class="cb"></span><span class="ct">Set <code>VITE_META_PIXEL_ID</code> in Vercel &amp; <b>redeploy</b></span></li>
+      <li><span class="cb"></span><span class="ct">Submit ONE test lead on the live site</span></li>
+      <li><span class="cb"></span><span class="ct">GA4: mark <code>generate_lead</code> as a <b>Key Event</b></span></li>
+      <li><span class="cb"></span><span class="ct">Meta: confirm <code>PageView</code> + <code>Lead</code> in Test Events / Pixel Helper</span></li>
+      <li><span class="cb"></span><span class="ct">Link GA4 &harr; Search Console</span></li>
+      <li><span class="cb"></span><span class="ct">Meta: verify domain (TXT record) &mdash; recommended</span></li>
+    </ul>
+
+    <div class="phase-h">Phase 3 &middot; Creative</div>
+    <ul class="checklist">
+      <li><span class="cb"></span><span class="ct">Gather assets: best project footage, 3D renders, website scroll-through</span></li>
+      <li><span class="cb"></span><span class="ct">Edit the reel in CapCut or DaVinci Resolve (not Photoshop!)</span></li>
+      <li><span class="cb"></span><span class="ct">Follow the 15&ndash;30s storyboard; add captions &amp; warm colour grade</span></li>
+      <li><span class="cb"></span><span class="ct">Export 9:16 (primary) + 4:5 and 1:1</span></li>
+      <li><span class="cb"></span><span class="ct">Prepare 2&ndash;3 creative variations to test</span></li>
+    </ul>
+
+    <div class="phase-h">Phase 4 &middot; Launch (only after tracking is confirmed)</div>
+    <ul class="checklist">
+      <li><span class="cb"></span><span class="ct">Build cold audience: affluent Faridabad + Delhi NCR + interests</span></li>
+      <li><span class="cb"></span><span class="ct">Create <b>Leads</b> campaign optimised for the <code>Lead</code> event</span></li>
+      <li><span class="cb"></span><span class="ct">Set budget ~₹1,000/day (Test/Learn); Advantage+ placements</span></li>
+      <li><span class="cb"></span><span class="ct">Publish; confirm Lead attribution appears Day 1</span></li>
+      <li><span class="cb"></span><span class="ct">Set up retargeting audiences (website visitors + IG engagers)</span></li>
+    </ul>
+
+    <div class="phase-h">Phase 5 &middot; Weekly rhythm (ongoing)</div>
+    <ul class="checklist">
+      <li><span class="cb"></span><span class="ct">Review GA4 (users, traffic source, <code>generate_lead</code>) &amp; Ads Manager (spend, leads, cost/lead)</span></li>
+      <li><span class="cb"></span><span class="ct">Score lead <b>quality</b> (budget/locality/scope), not just count</span></li>
+      <li><span class="cb"></span><span class="ct">Reply to new Google reviews; post a GBP update</span></li>
+      <li><span class="cb"></span><span class="ct">Pause losing ads, scale winners; refresh creative monthly</span></li>
+      <li><span class="cb"></span><span class="ct">Month 2: add retargeting spend &middot; Month 3: add Lookalike &amp; scale</span></li>
+    </ul>
+
+    <div class="box key">
+      <span class="tag">Remember</span>
+      <p>Your target is quiet and profitable: <b>~1 qualified 50L+ lead a month</b>. A high cost-per-lead is expected and fine. Optimise relentlessly for the <b>right</b> affluent NCR homeowner &mdash; not for cheap clicks &mdash; and the math works overwhelmingly in your favour.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="legal">
+  <div class="wrap">
+    <p>Prepared for Cornelian Executive Interiors, Faridabad, Haryana &middot; August 2026. Platform steps (Google Business Profile, Search Console, GA4, Meta Events Manager &amp; Ads Manager) reflect the interfaces and policies current at the time of writing and may change &mdash; follow the on-screen prompts. All cost figures (CPM/CPC/CPL and budgets) are <b>researched market ranges for India / Delhi NCR, not quotations or guarantees</b>, and will vary by audience, creative and competition. Tip: print this page or save as PDF from your browser (Cmd/Ctrl&nbsp;+&nbsp;P).</p>
+  </div>
+</footer>
+
+</body>
+</html>

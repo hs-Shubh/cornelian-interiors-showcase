@@ -1,11 +1,16 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { useReducedMotion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Headless Lenis smooth-scroll driver. Mounted once at the app root.
- * Disabled entirely when the user prefers reduced motion, so native
- * scrolling (and CSS scroll-behavior) is preserved.
+ * Headless Lenis smooth-scroll driver, synchronised with GSAP ScrollTrigger.
+ * Lenis is driven by the GSAP ticker (single RAF loop) and every Lenis scroll
+ * updates ScrollTrigger, so pinned/scrubbed GSAP timelines track the smooth
+ * scroll exactly. Disabled entirely under prefers-reduced-motion.
  */
 export function SmoothScroll() {
   const reduce = useReducedMotion();
@@ -20,14 +25,13 @@ export function SmoothScroll() {
       touchMultiplier: 1.5,
     });
 
-    let frame = 0;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      frame = requestAnimationFrame(raf);
-    };
-    frame = requestAnimationFrame(raf);
+    lenis.on("scroll", ScrollTrigger.update);
 
-    // In-page anchor links should route through Lenis for a smooth glide.
+    const tick = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(tick);
+    gsap.ticker.lagSmoothing(0);
+
+    // In-page anchor links glide through Lenis.
     const onAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement)?.closest?.(
         'a[href^="#"]'
@@ -44,7 +48,7 @@ export function SmoothScroll() {
     document.addEventListener("click", onAnchorClick);
 
     return () => {
-      cancelAnimationFrame(frame);
+      gsap.ticker.remove(tick);
       document.removeEventListener("click", onAnchorClick);
       lenis.destroy();
     };

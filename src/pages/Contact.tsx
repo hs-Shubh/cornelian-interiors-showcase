@@ -1,8 +1,11 @@
 import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 import { SeoHead } from "@/components/SeoHead";
 import { LeadInquiryForm } from "@/components/LeadInquiryForm";
+import { Quote } from "@/components/Quote";
+import { quoteByIndex } from "@/data/quotes";
 
 const Contact = () => {
+  const quote = quoteByIndex(2);
   return (
     <>
       <SeoHead />
@@ -70,7 +73,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="luxury-label mb-1">Location</p>
-                    <p className="font-heading text-xl">D107, Sector 2, Noida, NCR</p>
+                    <p className="font-heading text-xl">Faridabad, Haryana</p>
                   </div>
                 </div>
 
@@ -106,6 +109,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      <Quote quote={quote.quote} author={quote.author} variant="cream" />
 
       {/* Values */}
       <section className="py-16 bg-charcoal text-cream">

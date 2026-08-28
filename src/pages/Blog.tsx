@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Newspaper } from "lucide-react";
 import { fetchBlogPosts } from "@/lib/api/blog";
 import { SeoHead } from "@/components/SeoHead";
 import { LazyImage } from "@/components/LazyImage";
+import { Quote } from "@/components/Quote";
+import { quoteByIndex } from "@/data/quotes";
 import { motionSection, motionStagger } from "@/components/PageTransition";
 
 const Blog = () => {
+  const quote = quoteByIndex(5);
   const { data: posts = [], isLoading } = useQuery({
     queryKey: ["blog-posts"],
     queryFn: fetchBlogPosts,
@@ -18,7 +21,10 @@ const Blog = () => {
       <SeoHead />
       <section className="pt-32 pb-20 bg-secondary" aria-labelledby="blog-heading">
         <div className="luxury-container">
-          <p className="luxury-label mb-4">Blog</p>
+          <p className="luxury-label mb-4 inline-flex items-center gap-2">
+            <Newspaper className="w-4 h-4 text-accent" aria-hidden />
+            Blog
+          </p>
           <h1 id="blog-heading" className="luxury-heading-xl mb-6">
             Interior Tips & Guides
           </h1>
@@ -28,6 +34,8 @@ const Blog = () => {
           </p>
         </div>
       </section>
+
+      <Quote quote={quote.quote} author={quote.author} variant="cream" />
 
       <section className="luxury-section bg-background">
         <div className="luxury-container">

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,48 +6,57 @@
 
 @layer base {
   :root {
-    /* Luxury Neutral Palette */
-    --background: 40 20% 97%;
-    --foreground: 30 8% 18%;
+    /* Cornelian brand palette — charcoal · cornelian terracotta · cream */
+    --background: 24 26% 9%;
+    --foreground: 36 24% 91%;
     
-    --card: 40 30% 98%;
-    --card-foreground: 30 8% 18%;
+    --card: 24 20% 12%;
+    --card-foreground: 36 24% 91%;
     
-    --popover: 40 30% 98%;
-    --popover-foreground: 30 8% 18%;
+    --popover: 24 20% 12%;
+    --popover-foreground: 36 24% 91%;
     
-    --primary: 30 8% 18%;
-    --primary-foreground: 40 20% 97%;
+    --primary: 36 24% 91%;
+    --primary-foreground: 24 26% 9%;
     
-    --secondary: 38 15% 92%;
-    --secondary-foreground: 30 8% 18%;
+    --secondary: 24 18% 14%;
+    --secondary-foreground: 36 24% 91%;
     
-    --muted: 38 12% 90%;
-    --muted-foreground: 30 6% 45%;
+    --muted: 24 14% 18%;
+    --muted-foreground: 32 12% 68%;
     
-    --accent: 40 45% 55%;
-    --accent-foreground: 30 8% 18%;
+    --accent: 20 66% 50%;
+    --accent-foreground: 36 30% 96%;
     
     --destructive: 0 72% 51%;
-    --destructive-foreground: 40 20% 97%;
+    --destructive-foreground: 36 24% 95%;
     
-    --border: 38 15% 88%;
-    --input: 38 15% 88%;
-    --ring: 40 45% 55%;
+    --border: 26 12% 20%;
+    --input: 26 12% 20%;
+    --ring: 20 66% 50%;
     
-    --radius: 0.25rem;
+    --radius: 0.125rem;
     
-    /* Custom luxury tokens */
-    --cream: 40 30% 96%;
-    --ivory: 43 33% 94%;
-    --champagne: 40 45% 55%;
-    --charcoal: 30 8% 18%;
-    --warm-grey: 35 6% 52%;
-    --light-grey: 38 10% 75%;
+    /* Custom brand tokens */
+    --cream: 36 30% 90%;
+    --ivory: 38 32% 93%;
+    --champagne: 24 60% 56%;
+    --charcoal: 24 26% 9%;
+    --warm-grey: 32 10% 60%;
+    --light-grey: 28 10% 42%;
+    --cornelian: 20 66% 50%;
+    --cornelian-glow: 24 66% 58%;
+    --ember: 18 62% 40%;
+    --taupe: 32 10% 60%;
+    --stone: 26 12% 22%;
+    --hairline: 28 12% 26%;
+    --cream-panel: 36 32% 90%;
+    --cream-panel-foreground: 24 22% 12%;
     
     /* Typography */
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-display: 'Fraunces', 'Cormorant Garamond', serif;
     
     /* Spacing */
     --section-padding: clamp(4rem, 10vw, 8rem);
@@ -59,8 +68,8 @@
   }
 
   .dark {
-    --background: 30 8% 8%;
-    --foreground: 40 20% 95%;
+    --background: 24 14% 8%;
+    --foreground: 38 30% 94%;
     
     --card: 30 8% 10%;
     --card-foreground: 40 20% 95%;
@@ -77,12 +86,12 @@
     --muted: 30 8% 18%;
     --muted-foreground: 38 10% 60%;
     
-    --accent: 40 45% 55%;
-    --accent-foreground: 40 20% 95%;
+    --accent: 22 64% 47%;
+    --accent-foreground: 38 40% 96%;
     
-    --border: 30 8% 18%;
-    --input: 30 8% 18%;
-    --ring: 40 45% 55%;
+    --border: 24 10% 18%;
+    --input: 24 10% 18%;
+    --ring: 22 64% 47%;
   }
 }
 
@@ -97,6 +106,14 @@
   
   body {
     @apply bg-background text-foreground font-body antialiased;
+  }
+
+  body {
+    background-image:
+      radial-gradient(1200px 700px at 8% -10%, hsl(26 80% 44% / 0.30), transparent 58%),
+      radial-gradient(1000px 800px at 100% 108%, hsl(18 72% 40% / 0.22), transparent 55%),
+      radial-gradient(900px 520px at 55% 42%, hsl(32 42% 32% / 0.14), transparent 62%);
+    background-attachment: fixed;
   }
   
   h1 { @apply font-heading text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight; }
@@ -132,11 +149,11 @@
   }
   
   .luxury-body {
-    @apply font-body text-base md:text-lg font-normal leading-relaxed text-foreground/85;
+    @apply font-body text-base md:text-lg font-normal leading-relaxed text-foreground/90;
   }
   
   .luxury-body-sm {
-    @apply font-body text-sm md:text-base font-normal leading-relaxed text-foreground/80;
+    @apply font-body text-sm md:text-base font-normal leading-relaxed text-foreground/[0.88];
   }
   
   .luxury-label {
@@ -297,4 +314,60 @@ html.lenis body {
   .ken-burns {
     animation: none;
   }
+}
+
+/* Film grain — subtle premium texture over the whole viewport */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+
+/* Thin premium hairline */
+.hairline-t { border-top: 1px solid hsl(var(--hairline)); }
+.hairline-b { border-bottom: 1px solid hsl(var(--hairline)); }
+
+/* Cream panel sections (warm "orange + cream" rhythm) */
+.section-cream {
+  background-color: hsl(var(--cream-panel));
+  color: hsl(var(--cream-panel-foreground));
+}
+.section-cream .luxury-body,
+.section-cream .luxury-body-sm {
+  color: hsl(var(--cream-panel-foreground) / 0.82);
+}
+.section-cream .luxury-label {
+  color: hsl(var(--ember));
+}
+.section-cream .luxury-divider {
+  background-color: hsl(var(--ember));
+}
+
+/* Flowing background blobs (subtle premium motion) */
+.flow-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.45;
+  will-change: transform;
+}
+.flow-blob-a { animation: floatA 20s ease-in-out infinite; }
+.flow-blob-b { animation: floatB 26s ease-in-out infinite; }
+.flow-blob-c { animation: floatA 32s ease-in-out infinite reverse; }
+@keyframes floatA {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4%, -3%, 0) scale(1.1); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-5%, 4%, 0) scale(1.14); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-blob-a, .flow-blob-b, .flow-blob-c { animation: none !important; }
 }

@@ -1,74 +1,15 @@
-// Project images
-import parxLaureate1 from "@/assets/projects/parx-laureate-1.jpg";
-import parxLaureate2 from "@/assets/projects/parx-laureate-2.jpg";
-import parxLaureate3 from "@/assets/projects/parx-laureate-3.jpg";
-import mezzaria1_1 from "@/assets/projects/mezzaria1-1.jpg";
-import mezzaria1_2 from "@/assets/projects/mezzaria1-2.jpg";
-import mezzaria1_3 from "@/assets/projects/mezzaria1-3.jpg";
-import mezzaria2_1 from "@/assets/projects/mezzaria2-1.jpg";
-import mezzaria2_2 from "@/assets/projects/mezzaria2-2.jpg";
-import mezzaria2_3 from "@/assets/projects/mezzaria2-3.jpg";
-
-export interface ProjectImage {
-  src: string;
-  caption: string;
-}
-
-export interface Project {
-  id: string;
-  slug: string;
-  name: string;
-  location: string;
-  category: string;
-  description: string;
-  thumbnail: string;
-  images: ProjectImage[];
-}
-
-export const projects: Project[] = [
-  {
-    id: "1",
-    slug: "parx-laureate",
-    name: "Parx Laureate",
-    location: "Noida",
-    category: "Residential",
-    description: "A masterpiece of contemporary elegance, Parx Laureate showcases our signature blend of classical beauty with modern functionality. Every corner speaks of refined taste and meticulous craftsmanship.",
-    thumbnail: parxLaureate1,
-    images: [
-      { src: parxLaureate1, caption: "Living Room" },
-      { src: parxLaureate2, caption: "Living Room" },
-      { src: parxLaureate3, caption: "Master Bedroom" },
-    ],
-  },
-  {
-    id: "2",
-    slug: "mahagun-mezzaria-1",
-    name: "Mahagun Mezzaria I",
-    location: "Greater Noida",
-    category: "Residential",
-    description: "An exquisite residence that embodies sophistication at every turn. Rich textures, thoughtful lighting, and bespoke furniture come together in perfect harmony.",
-    thumbnail: mezzaria1_1,
-    images: [
-      { src: mezzaria1_1, caption: "Living Room" },
-      { src: mezzaria1_2, caption: "Lounge" },
-      { src: mezzaria1_3, caption: "Master Bedroom" },
-    ],
-  },
-  {
-    id: "3",
-    slug: "mahagun-mezzaria-2",
-    name: "Mahagun Mezzaria II",
-    location: "Greater Noida",
-    category: "Residential",
-    description: "Where traditional meets modern in perfect equilibrium. This residence features an elegant interplay of light, space, and luxurious materials.",
-    thumbnail: mezzaria2_1,
-    images: [
-      { src: mezzaria2_1, caption: "Living Room" },
-      { src: mezzaria2_2, caption: "Lounge" },
-      { src: mezzaria2_3, caption: "Master Bedroom" },
-    ],
-  },
-];
+// Project data + types now live in dedicated modules.
+// Re-exported here for backward compatibility with existing imports.
+export { projects } from "./projects";
+export type {
+  Project,
+  ProjectImage,
+  ProjectPlan,
+  ProjectVideo,
+  ProjectBrand,
+  ProjectMedia,
+  WalkthroughFrames,
+} from "@/types/project";
 
 export const services = [
   {

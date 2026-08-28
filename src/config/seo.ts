@@ -18,6 +18,10 @@ export const ROUTE_SEO: Record<string, { title: string; description: string }> =
     title: "Our Projects | Interior Design Portfolio | Cornelian Interiors Noida",
     description: "Explore our portfolio of luxury residential and commercial interiors in Noida and Greater Noida. Interior design projects by Cornelian Executive Interiors.",
   },
+  "/showcase": {
+    title: "3D Walkthrough | Interior Design Showcase | Cornelian Interiors",
+    description: "Take an immersive room-by-room 3D walkthrough of a signature Cornelian residence. Interior design & build in Faridabad, Haryana by Cornelian Executive Interiors.",
+  },
   "/services": {
     title: "Interior Design & Build Services | Noida | Cornelian Interiors",
     description: "Interior designing, construction, renovation, customized furniture, modular wardrobe & kitchen, home automation. Full-service interior design in Noida, NCR.",
@@ -28,7 +32,7 @@ export const ROUTE_SEO: Record<string, { title: string; description: string }> =
   },
   "/contact": {
     title: "Contact | Cornelian Executive Interiors | Noida",
-    description: "Get in touch. D107 Sector 2 Noida. Phone, email, Instagram. Start your interior design project.",
+    description: "Get in touch. Faridabad, Haryana. Phone, email, Instagram. Start your interior design project.",
   },
   "/blog": {
     title: "Blog | Interior Tips & Guides | Cornelian Interiors",
