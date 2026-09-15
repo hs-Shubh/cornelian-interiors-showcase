@@ -12,6 +12,7 @@ import { SmoothScroll } from "./components/SmoothScroll";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { LeadPopup } from "./components/LeadPopup";
 import { Analytics } from "./components/Analytics";
+import { SplashScreen } from "./components/SplashScreen";
 
 const Home = lazy(() => import("./pages/Home"));
 const Showcase = lazy(() => import("./pages/Showcase"));
@@ -47,6 +48,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <SplashScreen />
       <BrowserRouter>
         <Analytics />
         <SmoothScroll />
