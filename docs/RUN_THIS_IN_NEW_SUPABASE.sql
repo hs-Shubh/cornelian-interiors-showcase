@@ -1,7 +1,8 @@
 -- ============================================================================
--- Cornelian — full schema for a fresh Supabase project (jsstzjomrfdebvjutnvp)
+-- Cornelian — full schema + RLS for project zudwmgyibdkmnsnuvehv
 -- Paste this whole file into: Supabase Dashboard → SQL Editor → Run.
--- Idempotent: safe to re-run. Creates tables + anon-insert RLS + storage.
+-- Idempotent & safe on an existing project: creates the missing design_requests
+-- table, (re)applies the anon-insert RLS policies, and adds storage buckets.
 -- ============================================================================
 
 -- ── Tables ──────────────────────────────────────────────────────────────────
