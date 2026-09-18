@@ -93,32 +93,38 @@ interface DesignPayload {
 }
 
 /* ------------------------------------------------------------------ *
- * Persistence fallback — save to Supabase when the webhook is absent
- * or fails. Never throws; the caller always resolves to a friendly
- * success state so the visitor is never shown a crash.
+ * Persistence fallback — save to Supabase `inquiries` when the design
+ * webhook is absent or fails. Never throws; the caller always resolves
+ * to a friendly success state so the visitor is never shown a crash.
  * ------------------------------------------------------------------ */
 async function saveToSupabase(payload: DesignPayload): Promise<void> {
-  // `design_requests` is not in the generated Database types, so use a
-  // loosely-typed handle to insert without touching shared type files.
-  const client = getSupabaseClient() as unknown as {
-    from: (table: string) => {
-      insert: (values: Record<string, unknown>) => Promise<{ error: unknown }>;
-    };
-  } | null;
+  const client = getSupabaseClient();
   if (!client) return; // Supabase not configured — still resolve gracefully.
+
+  const dims =
+    payload.length_ft && payload.width_ft
+      ? `${payload.length_ft} × ${payload.width_ft}${payload.height_ft ? ` × ${payload.height_ft}` : ""} ft`
+      : "";
+  const message = [
+    payload.styles.length ? `Styles: ${payload.styles.join(", ")}` : "",
+    payload.palette ? `Palette: ${payload.palette}` : "",
+    payload.budget ? `Budget: ${payload.budget}` : "",
+    payload.whatsapp ? `WhatsApp: ${payload.whatsapp}` : "",
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
   try {
-    await client.from("design_requests").insert({
+    await client.from("inquiries").insert({
       name: payload.name,
       email: payload.email,
-      phone: payload.phone,
-      whatsapp: payload.whatsapp,
-      room_type: payload.room_type,
-      length_ft: payload.length_ft,
-      width_ft: payload.width_ft,
-      height_ft: payload.height_ft,
-      styles: payload.styles,
-      palette: payload.palette,
-      budget: payload.budget,
+      phone: payload.phone || null,
+      message: message || null,
+      inquiry_type: "design-studio",
+      product_type: payload.room_type || null,
+      source: "design-studio",
+      page_path: "/design-studio",
+      dimensions_text: dims || null,
       status: "new",
     });
   } catch {
