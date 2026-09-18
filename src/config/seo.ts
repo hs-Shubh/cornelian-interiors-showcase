@@ -1,9 +1,9 @@
-export const SITE_URL = import.meta.env.VITE_SITE_URL ?? (typeof window !== "undefined" ? window.location.origin : "https://cornelianinteriors.com");
+export const SITE_URL = "https://www.cornelianinteriors.com";
 
 export const SEO_DEFAULTS = {
   siteName: "Cornelian Executive Interiors",
-  title: "Cornelian Executive Interiors | Timeless Spaces, Bespoke Furniture & Art",
-  description: "Luxury interior design & build in Noida, NCR. Bespoke custom furniture, CHIITRA wall art. Timeless spaces, delivered.",
+  title: "Interior Designers in Noida | Cornelian Executive Interiors",
+  description: "Luxury interior designers in Noida & NCR. Turnkey interiors, bespoke furniture, modular kitchens & CHIITRA wall art. Book a free design consultation.",
   keywords: "Interior designers in Noida, Modular kitchen Noida, Custom furniture NCR, Luxury interiors India, Interior design Noida, Custom cabinets Noida",
   ogImage: `${SITE_URL}/og-image.jpg`,
   twitterHandle: "@world_cornelian",
@@ -11,8 +11,8 @@ export const SEO_DEFAULTS = {
 
 export const ROUTE_SEO: Record<string, { title: string; description: string }> = {
   "/": {
-    title: `${SEO_DEFAULTS.siteName} | Timeless Spaces, Bespoke Furniture & Art`,
-    description: "Transform your space with Cornelian. Premium interior design, custom furniture & CHIITRA wall art in Noida, NCR. Get a free consultation.",
+    title: "Interior Designers in Noida | Cornelian Executive Interiors",
+    description: "Luxury interior designers in Noida & NCR — turnkey interiors, bespoke furniture, modular kitchens & CHIITRA wall art. Book a free design consultation.",
   },
   "/projects": {
     title: "Our Projects | Interior Design Portfolio | Cornelian Interiors Noida",
@@ -20,7 +20,7 @@ export const ROUTE_SEO: Record<string, { title: string; description: string }> =
   },
   "/showcase": {
     title: "3D Walkthrough | Interior Design Showcase | Cornelian Interiors",
-    description: "Take an immersive room-by-room 3D walkthrough of a signature Cornelian residence. Interior design & build in Faridabad, Haryana by Cornelian Executive Interiors.",
+    description: "Take an immersive room-by-room 3D walkthrough of a signature Cornelian residence. Interior design & build in Noida, NCR by Cornelian Executive Interiors.",
   },
   "/services": {
     title: "Interior Design & Build Services | Noida | Cornelian Interiors",
@@ -32,7 +32,7 @@ export const ROUTE_SEO: Record<string, { title: string; description: string }> =
   },
   "/contact": {
     title: "Contact | Cornelian Executive Interiors | Noida",
-    description: "Get in touch. Faridabad, Haryana. Phone, email, Instagram. Start your interior design project.",
+    description: "Get in touch with Cornelian Executive Interiors, Noida. Phone, email, Instagram. Start your interior design project across Delhi NCR.",
   },
   "/blog": {
     title: "Blog | Interior Tips & Guides | Cornelian Interiors",

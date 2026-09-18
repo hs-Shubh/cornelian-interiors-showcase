@@ -106,6 +106,9 @@ const Home = () => {
             initial="initial"
             animate="animate"
           >
+            <span className="block text-xl sm:text-2xl md:text-3xl tracking-[0.06em] text-cream/85 mb-4 md:mb-5">
+              Interior Designers in Noida &amp; NCR
+            </span>
             Timeless
             <br />
             Spaces,

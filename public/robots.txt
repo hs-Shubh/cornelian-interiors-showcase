@@ -1,6 +1,26 @@
 User-agent: *
 Allow: /
-Disallow: /api/
 
-# Sitemap (replace with your production URL if different)
-Sitemap: https://cornelianinteriors.com/sitemap.xml
+# Explicitly permit AI answer-engine crawlers (GEO/AEO visibility)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Disallow: /api/
+Disallow: /*?utm_*
+Disallow: /*?fbclid=
+
+Sitemap: https://www.cornelianinteriors.com/sitemap.xml
