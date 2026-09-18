@@ -28,7 +28,7 @@ import scrollDown from "@/assets/lottie/scroll-down.json";
 import { PinnedStatement } from "@/components/PinnedStatement";
 import { Quote } from "@/components/Quote";
 import { quoteByIndex } from "@/data/quotes";
-import { FlowingBackground } from "@/components/FlowingBackground";
+import { HeroWalkthrough } from "@/components/HeroWalkthrough";
 import { FeatureBand } from "@/components/FeatureBand";
 import { DesignStudioCTA } from "@/components/DesignStudioCTA";
 
@@ -87,22 +87,9 @@ const Home = () => {
     <>
       <SeoHead jsonLd={[organizationSchema]} />
 
-      {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col justify-end overflow-hidden bg-charcoal" aria-label="Hero">
-        <div className="absolute inset-0">
-          <ParallaxImage
-            src={img("235b0364-08c0-4dfa-888c-6fcf46d710b9")}
-            alt="Luxury double-height foyer by Cornelian Executive Interiors"
-            className="h-full w-full"
-            strength={5}
-            kenBurns
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/45 to-charcoal/60" />
-          <FlowingBackground />
-        </div>
-
-        <div className="relative z-10 luxury-container pt-32 pb-10 md:pb-14">
+      {/* ── Hero (cinematic room walkthrough) ────────────────── */}
+      <HeroWalkthrough>
+        <div className="luxury-container pt-32 pb-14 md:pb-20">
           <motion.p
             className="luxury-label text-accent mb-6"
             custom={0}
@@ -113,18 +100,20 @@ const Home = () => {
             Cornelian Executive Interiors — Design &amp; Build
           </motion.p>
           <motion.h1
-            className="luxury-heading-xl text-cream max-w-5xl"
+            className="font-heading font-semibold uppercase tracking-tight leading-[0.9] text-cream text-5xl sm:text-7xl md:text-8xl"
             custom={1}
             variants={heroStagger}
             initial="initial"
             animate="animate"
           >
-            Timeless spaces,
+            Timeless
             <br />
-            <span className="text-accent italic">crafted to live in.</span>
+            Spaces,
+            <br />
+            <span className="text-accent italic normal-case">crafted to live in.</span>
           </motion.h1>
           <motion.p
-            className="luxury-body text-cream/75 max-w-xl mt-6"
+            className="luxury-body text-cream/75 max-w-xl mt-8"
             custom={2}
             variants={heroStagger}
             initial="initial"
@@ -133,40 +122,33 @@ const Home = () => {
             A turnkey interior design &amp; build studio — we imagine, render and deliver
             complete residences where classical craft meets modern living.
           </motion.p>
-
           <motion.div
-            className="mt-10 md:mt-14 pt-6 hairline-t flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+            className="mt-10 flex flex-wrap items-center gap-6"
             custom={3}
             variants={heroStagger}
             initial="initial"
             animate="animate"
           >
-            <p className="luxury-label text-cream/55">
-              Turnkey Interiors · Design · Build · Fit-Out — Faridabad
-            </p>
-            <div className="flex items-center gap-6">
-              <Link
-                to="/contact"
-                className="group inline-flex items-center gap-3 bg-accent text-accent-foreground px-7 py-3.5 font-body text-xs tracking-[0.14em] uppercase transition-colors duration-500 hover:bg-cornelian-glow"
-              >
-                Get Consultation
-                <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                to="/showcase"
-                className="group inline-flex items-center gap-2 font-body text-xs tracking-[0.14em] uppercase text-cream/90 hover:text-accent transition-colors"
-              >
-                Enter the Walkthrough
-                <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-3 bg-accent text-accent-foreground px-8 py-4 font-body text-xs tracking-[0.14em] uppercase transition-colors duration-500 hover:bg-cornelian-glow"
+            >
+              Get Consultation
+              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              to="/showcase"
+              className="group inline-flex items-center gap-2 font-body text-xs tracking-[0.14em] uppercase text-cream/90 hover:text-accent transition-colors"
+            >
+              Enter the Walkthrough
+              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
           </motion.div>
         </div>
-
         <div className="absolute bottom-6 right-6 w-8 opacity-60 [filter:invert(1)_sepia(1)_saturate(3)_hue-rotate(-10deg)]">
           <LottiePlayer animationData={scrollDown} />
         </div>
-      </section>
+      </HeroWalkthrough>
 
       {/* ── Marquee ──────────────────────────────────────────── */}
       <section className="overflow-hidden border-y border-border bg-charcoal py-5" aria-hidden>
