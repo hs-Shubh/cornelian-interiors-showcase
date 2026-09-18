@@ -38,7 +38,7 @@ const Navigation = () => {
       <div
         className={`mx-auto transition-all duration-500 ease-luxury ${
           isScrolled
-            ? "mt-3 max-w-6xl rounded-[1.75rem] border border-white/10 bg-charcoal/70 px-5 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+            ? "mt-3 max-w-[1400px] rounded-[1.75rem] border border-white/10 bg-charcoal/70 px-6 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl"
             : solid
             ? "mt-0 max-w-[1400px] rounded-none border-b border-white/10 bg-charcoal/85 px-6 backdrop-blur-xl md:px-10 lg:px-16"
             : "mt-0 max-w-[1400px] rounded-none border-b border-white/10 bg-transparent px-6 md:px-10 lg:px-16"

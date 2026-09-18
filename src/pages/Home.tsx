@@ -91,7 +91,7 @@ const Home = () => {
       <HeroWalkthrough>
         <div className="luxury-container pt-32 pb-14 md:pb-20">
           <motion.p
-            className="luxury-label text-accent mb-6"
+            className="luxury-label text-accent font-bold mb-6"
             custom={0}
             variants={heroStagger}
             initial="initial"
