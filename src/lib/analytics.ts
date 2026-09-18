@@ -29,7 +29,7 @@ declare global {
   }
 }
 
-const GA_ID = (import.meta.env.VITE_GA_ID as string | undefined)?.trim() || "";
+const GA_ID = (import.meta.env.VITE_GA_ID as string | undefined)?.trim() || "G-ZZGHKWRSCF";
 const PIXEL_ID = (import.meta.env.VITE_META_PIXEL_ID as string | undefined)?.trim() || "2025563441738822";
 let started = false;
 
