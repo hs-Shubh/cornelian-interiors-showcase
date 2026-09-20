@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import { useReducedMotion } from "framer-motion";
 import { gsap } from "gsap";
@@ -21,6 +21,7 @@ import { scenes, img } from "@/lib/showcase";
 import { SeoHead } from "@/components/SeoHead";
 import { SITE_URL } from "@/config/seo";
 import { ScrollSequence } from "@/components/ScrollSequence";
+import { trackViewContent } from "@/lib/analytics";
 import { Quote } from "@/components/Quote";
 import { quoteByIndex } from "@/data/quotes";
 import { getFlagshipProject, getAllProjects } from "@/lib/projects";
@@ -32,6 +33,10 @@ const Showcase = () => {
   const root = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const flagship = getFlagshipProject();
+
+  useEffect(() => {
+    trackViewContent("3D Showcase");
+  }, []);
   const quote = quoteByIndex(4);
 
   // Real photographed project shots — surfaced alongside the 3D renders for

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { trackViewContent } from "@/lib/analytics";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -254,6 +256,10 @@ const ProjectDetail = () => {
   const { slug } = useParams();
   const projects = getAllProjects();
   const project = getProjectBySlug(slug ?? "");
+
+  useEffect(() => {
+    trackViewContent(`Project: ${slug ?? ""}`);
+  }, [slug]);
 
   if (!project) return <NotFound />;
 

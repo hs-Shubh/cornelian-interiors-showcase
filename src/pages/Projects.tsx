@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { trackViewContent } from "@/lib/analytics";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import {
@@ -15,6 +17,10 @@ import { SeoHead } from "@/components/SeoHead";
 const Projects = () => {
   const flagship = getFlagshipProject();
   const standard = getStandardProjects();
+
+  useEffect(() => {
+    trackViewContent("Projects");
+  }, []);
 
   return (
     <>

@@ -83,8 +83,35 @@ export function trackPageview(path: string) {
   if (PIXEL_ID && window.fbq) window.fbq("track", "PageView");
 }
 
+/** Stable id shared between the browser Pixel and a future Conversions API call (dedup). */
+function newEventId(): string {
+  try {
+    return crypto.randomUUID();
+  } catch {
+    return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
+}
+
 /** Fire on a successful form submission. `source` = which form/page. */
-export function trackLead(source: string) {
+export function trackLead(source: string): string {
+  const eventID = newEventId();
   if (GA_ID && window.gtag) window.gtag("event", "generate_lead", { source });
-  if (PIXEL_ID && window.fbq) window.fbq("track", "Lead", { content_name: source });
+  if (PIXEL_ID && window.fbq) window.fbq("track", "Lead", { content_name: source }, { eventID });
+  return eventID;
+}
+
+/** Fire on portfolio / project page views. */
+export function trackViewContent(name: string): string {
+  const eventID = newEventId();
+  if (GA_ID && window.gtag) window.gtag("event", "view_item", { item_name: name });
+  if (PIXEL_ID && window.fbq) window.fbq("track", "ViewContent", { content_name: name }, { eventID });
+  return eventID;
+}
+
+/** Fire on WhatsApp / phone button clicks. `method` = "whatsapp" | "phone". */
+export function trackContact(method: string): string {
+  const eventID = newEventId();
+  if (GA_ID && window.gtag) window.gtag("event", "contact", { method });
+  if (PIXEL_ID && window.fbq) window.fbq("track", "Contact", { method }, { eventID });
+  return eventID;
 }

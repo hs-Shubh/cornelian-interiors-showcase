@@ -28,6 +28,8 @@ const CustomFurniture = lazy(() => import("./pages/CustomFurniture"));
 const Chiitra = lazy(() => import("./pages/Chiitra"));
 const DesignStudio = lazy(() => import("./pages/DesignStudio"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const ThankYou = lazy(() => import("./pages/ThankYou"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -74,6 +76,8 @@ const App = () => (
                 <Route path="/chiitra" element={<Chiitra />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>

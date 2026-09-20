@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 import logo from "@/assets/logo-mark.png";
+import { trackContact } from "@/lib/analytics";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -70,6 +71,7 @@ const Footer = () => {
             <div className="flex flex-col gap-4">
               <a
                 href="tel:+919720130734"
+                onClick={() => trackContact("phone")}
                 className="flex items-center gap-3 text-sm text-light-grey hover:text-cream transition-colors"
               >
                 <Phone size={16} />
@@ -105,6 +107,12 @@ const Footer = () => {
             <p className="text-xs text-light-grey">
               © {currentYear} Cornelian Executive Interiors. All rights reserved.
             </p>
+            <Link
+              to="/privacy"
+              className="text-xs text-light-grey hover:text-cream transition-colors"
+            >
+              Privacy Policy
+            </Link>
             <p className="text-xs text-light-grey">
               Trust • Transparency • Quality • Value
             </p>

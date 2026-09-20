@@ -1,3 +1,5 @@
+import { trackContact } from "@/lib/analytics";
+
 const DEFAULT_NUMBER = "919720130734"; // +91 97201 30734 (from brand hoarding)
 const PREFILL = "Hi Cornelian, I'd like to discuss an interior project.";
 
@@ -14,6 +16,7 @@ export function WhatsAppButton() {
   return (
     <a
       href={whatsappUrl}
+      onClick={() => trackContact("whatsapp")}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Cornelian on WhatsApp"
