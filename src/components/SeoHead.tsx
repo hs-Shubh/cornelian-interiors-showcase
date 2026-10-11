@@ -9,6 +9,8 @@ interface SeoHeadProps {
   ogImage?: string;
   noindex?: boolean;
   jsonLd?: object | object[];
+  prevUrl?: string;
+  nextUrl?: string;
 }
 
 export function SeoHead({
@@ -18,6 +20,8 @@ export function SeoHead({
   ogImage,
   noindex,
   jsonLd,
+  prevUrl,
+  nextUrl,
 }: SeoHeadProps) {
   const location = useLocation();
   const pathSeo = getSeoForPath(location.pathname);
@@ -50,6 +54,28 @@ export function SeoHead({
       robots.remove();
     }
   }, [noindex]);
+
+  useEffect(() => {
+    const set = (rel: "prev" | "next", href?: string) => {
+      let link = document.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+      if (href) {
+        if (!link) {
+          link = document.createElement("link");
+          link.setAttribute("rel", rel);
+          document.head.appendChild(link);
+        }
+        link.setAttribute("href", href);
+      } else if (link) {
+        link.remove();
+      }
+    };
+    set("prev", prevUrl);
+    set("next", nextUrl);
+    return () => {
+      set("prev", undefined);
+      set("next", undefined);
+    };
+  }, [prevUrl, nextUrl]);
 
   return (
     <>

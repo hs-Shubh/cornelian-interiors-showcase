@@ -24,3 +24,4 @@ Disallow: /*?utm_*
 Disallow: /*?fbclid=
 
 Sitemap: https://www.cornelianinteriors.com/sitemap.xml
+Sitemap: https://www.cornelianinteriors.com/image-sitemap.xml

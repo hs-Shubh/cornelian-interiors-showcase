@@ -23,6 +23,8 @@ const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail"));
+const BlogCategory = lazy(() => import("./pages/BlogCategory"));
+const BlogAuthor = lazy(() => import("./pages/BlogAuthor"));
 const CustomOrder = lazy(() => import("./pages/CustomOrder"));
 const CustomFurniture = lazy(() => import("./pages/CustomFurniture"));
 const Chiitra = lazy(() => import("./pages/Chiitra"));
@@ -70,6 +72,9 @@ const App = () => (
                 <Route path="/projects/:slug" element={<ProjectDetail />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/page/:page" element={<Blog />} />
+                <Route path="/blog/category/:slug" element={<BlogCategory />} />
+                <Route path="/blog/author/:slug" element={<BlogAuthor />} />
                 <Route path="/blog/:slug" element={<BlogDetail />} />
                 <Route path="/custom-order" element={<CustomOrder />} />
                 <Route path="/custom-furniture" element={<CustomFurniture />} />

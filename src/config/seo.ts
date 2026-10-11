@@ -35,8 +35,8 @@ export const ROUTE_SEO: Record<string, { title: string; description: string }> =
     description: "Get in touch with Cornelian Executive Interiors, Noida. Phone, email, Instagram. Start your interior design project across Delhi NCR.",
   },
   "/blog": {
-    title: "Blog | Interior Tips & Guides | Cornelian Interiors",
-    description: "Interior design tips, modular kitchen guides, furniture buying advice. Expert content from Cornelian Executive Interiors.",
+    title: "Interior Design Insights — Noida & NCR | Cornelian",
+    description: "Specification-first interior design guides for Noida & NCR — water, power, air, materials, process and bespoke CHIITRA art. From real site experience.",
   },
   "/custom-order": {
     title: "Design Your Cabinet | Custom Furniture Order | Cornelian Interiors",

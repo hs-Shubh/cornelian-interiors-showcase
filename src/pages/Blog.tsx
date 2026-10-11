@@ -1,98 +1,149 @@
-import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { Link, useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Newspaper } from "lucide-react";
-import { fetchBlogPosts } from "@/lib/api/blog";
+import { ArrowRight, Clock } from "lucide-react";
+import {
+  getAllPosts,
+  getCategoryBySlug,
+  getAuthorBySlug,
+  categories,
+  paginate,
+} from "@/data/blog";
+import { buildBlogIndexGraph, blogUrl } from "@/lib/blog/schema";
 import { SeoHead } from "@/components/SeoHead";
 import { LazyImage } from "@/components/LazyImage";
-import { Quote } from "@/components/Quote";
-import { quoteByIndex } from "@/data/quotes";
-import { motionSection, motionStagger } from "@/components/PageTransition";
+import { motionStagger } from "@/components/PageTransition";
+
+function formatDate(iso: string): string {
+  return new Date(iso + "T00:00:00").toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
 
 const Blog = () => {
-  const quote = quoteByIndex(5);
-  const { data: posts = [], isLoading } = useQuery({
-    queryKey: ["blog-posts"],
-    queryFn: fetchBlogPosts,
-  });
+  const { page: pageParam } = useParams<{ page: string }>();
+  const page = pageParam ? Number(pageParam) : 1;
+
+  if (pageParam && (!Number.isInteger(page) || page < 1)) {
+    return <Navigate to="/blog" replace />;
+  }
+
+  const all = getAllPosts();
+  const paged = paginate(all, page);
+
+  // page number beyond range, or /blog/page/1 (should canonicalise to /blog)
+  if (pageParam && (page > paged.totalPages || page === 1)) {
+    return <Navigate to="/blog" replace />;
+  }
+
+  const canonical = paged.page > 1 ? `${blogUrl}/page/${paged.page}` : blogUrl;
+  const prevUrl =
+    paged.page > 1 ? (paged.page === 2 ? blogUrl : `${blogUrl}/page/${paged.page - 1}`) : undefined;
+  const nextUrl = paged.page < paged.totalPages ? `${blogUrl}/page/${paged.page + 1}` : undefined;
 
   return (
     <>
-      <SeoHead />
-      <section className="pt-32 pb-20 bg-secondary" aria-labelledby="blog-heading">
+      <SeoHead
+        title="Interior Design Insights — Noida & NCR | Cornelian"
+        description="Specification-first interior design guides for Noida & NCR — water, power, air, materials, process and bespoke art. Written from real site experience."
+        canonical={canonical}
+        prevUrl={prevUrl}
+        nextUrl={nextUrl}
+        jsonLd={buildBlogIndexGraph(paged.items, paged.page)}
+      />
+
+      <section className="pt-32 pb-12 bg-secondary" aria-labelledby="blog-heading">
         <div className="luxury-container">
-          <p className="luxury-label mb-4 inline-flex items-center gap-2">
-            <Newspaper className="w-4 h-4 text-accent" aria-hidden />
-            Blog
-          </p>
+          <p className="luxury-label mb-4">Insights</p>
           <h1 id="blog-heading" className="luxury-heading-xl mb-6">
-            Interior Tips & Guides
+            Interior Design Insights — Noida &amp; NCR
           </h1>
           <div className="luxury-divider mb-8" />
           <p className="luxury-body max-w-2xl">
-            Expert advice on interior design, modular kitchens, custom furniture, and more. Interior designers in Noida — insights from Cornelian Executive Interiors.
+            Specification-first guides written from real site experience in Noida and Greater Noida —
+            the water, power, air and society conditions that decide how an interior actually ages,
+            plus the materials, process and bespoke art behind a lasting home.
           </p>
         </div>
       </section>
 
-      <Quote quote={quote.quote} author={quote.author} variant="cream" />
+      {/* Category filter row */}
+      <section className="bg-background border-b border-hairline sticky top-0 z-20" aria-label="Browse by category">
+        <div className="luxury-container py-4 flex flex-wrap gap-2">
+          <Link
+            to="/blog"
+            className="px-4 py-1.5 text-sm font-body tracking-wide rounded-full bg-charcoal text-cream"
+          >
+            All
+          </Link>
+          {categories.map((c) => (
+            <Link
+              key={c.slug}
+              to={`/blog/category/${c.slug}`}
+              className="px-4 py-1.5 text-sm font-body tracking-wide rounded-full border border-hairline hover:border-accent hover:text-accent transition-colors"
+            >
+              {c.name}
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section className="luxury-section bg-background">
         <div className="luxury-container">
-          {isLoading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="animate-pulse">
-                  <div className="w-full aspect-[4/3] bg-muted rounded" />
-                  <div className="h-4 bg-muted mt-4 w-2/3" />
-                  <div className="h-3 bg-muted mt-2 w-full" />
-                </div>
-              ))}
-            </div>
-          ) : posts.length === 0 ? (
-            <motion.div
-              className="text-center py-16 border border-border rounded-lg"
-              {...motionSection}
-            >
-              <p className="luxury-body mb-4">No posts yet. Check back soon for interior design tips and guides.</p>
-              <Link to="/" className="text-accent font-body text-sm tracking-[0.1em] uppercase hover:underline">
-                Back to Home
-              </Link>
-            </motion.div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {paged.items.map((post, i) => {
+              const category = getCategoryBySlug(post.categorySlug);
+              const author = getAuthorBySlug(post.authorSlug);
+              return (
                 <motion.article
-                  key={post.id}
+                  key={post.slug}
                   {...motionStagger}
                   transition={{ ...motionStagger.transition, delay: i * 0.06 }}
                 >
                   <Link to={`/blog/${post.slug}`} className="group block">
-                    <div className="luxury-image-hover mb-6 overflow-hidden">
-                      {post.cover_image ? (
-                        <LazyImage
-                          src={post.cover_image}
-                          alt=""
-                          className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                      ) : (
-                        <div className="w-full aspect-[4/3] bg-muted" aria-hidden />
-                      )}
+                    <div className="luxury-image-hover mb-5 overflow-hidden">
+                      <LazyImage
+                        src={post.hero.src}
+                        alt={post.hero.alt}
+                        className="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
                     </div>
+                    {category && <span className="luxury-label block mb-2">{category.name}</span>}
                     <h2 className="luxury-heading-sm mb-2 group-hover:text-accent transition-colors line-clamp-2">
                       {post.title}
                     </h2>
-                    {post.excerpt && (
-                      <p className="luxury-body-sm line-clamp-2">{post.excerpt}</p>
-                    )}
-                    <span className="inline-flex items-center gap-2 mt-3 font-body text-xs tracking-[0.1em] uppercase text-accent group-hover:gap-3 transition-all">
-                      Read more
-                      <ArrowRight size={14} />
-                    </span>
+                    <p className="luxury-body-sm line-clamp-2 mb-3">{post.excerpt}</p>
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                      {author && <span>{author.name}</span>}
+                      <time dateTime={post.datePublished}>{formatDate(post.datePublished)}</time>
+                      <span className="inline-flex items-center gap-1">
+                        <Clock size={12} aria-hidden /> {post.readingTimeMin} min
+                      </span>
+                    </div>
                   </Link>
                 </motion.article>
-              ))}
-            </div>
+              );
+            })}
+          </div>
+
+          {/* Pagination */}
+          {paged.totalPages > 1 && (
+            <nav aria-label="Pagination" className="mt-16 flex items-center justify-center gap-4">
+              {prevUrl && (
+                <Link to={prevUrl === blogUrl ? "/blog" : `/blog/page/${paged.page - 1}`} className="text-accent inline-flex items-center gap-2 hover:gap-3 transition-all">
+                  <ArrowRight size={16} className="rotate-180" /> Newer
+                </Link>
+              )}
+              <span className="text-sm text-muted-foreground">
+                Page {paged.page} of {paged.totalPages}
+              </span>
+              {nextUrl && (
+                <Link to={`/blog/page/${paged.page + 1}`} className="text-accent inline-flex items-center gap-2 hover:gap-3 transition-all">
+                  Older <ArrowRight size={16} />
+                </Link>
+              )}
+            </nav>
           )}
         </div>
       </section>
